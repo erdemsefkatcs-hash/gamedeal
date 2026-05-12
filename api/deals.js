@@ -6,6 +6,16 @@ const CHEAPSHARK = 'https://www.cheapshark.com/api/1.0';
 const ITAD_KEY   = 'ef4c05e2fcc9562617e65fb738c8ea0a565af6df';
 const ITAD_BASE  = 'https://api.isthereanydeal.com';
 
+function isDLCTitle(title) {
+  const tl = title.toLowerCase();
+  const dlcKeywords = [' - dlc', ' dlc', 'soundtrack', 'season pass', 'add-on', 'addon',
+    'expansion pack', ' pack', 'upgrade pack', 'content pack', 'cosmetic', 'skin pack',
+    'art book', 'artbook', 'digital artbook', 'digital book', 'digital soundtrack',
+    'original soundtrack', ' ost', 'collector', 'pre-order bonus', 'bonus content',
+    'deluxe upgrade', 'premium upgrade', 'year one pass', 'expansion pass'];
+  return dlcKeywords.some(k => tl.includes(k));
+}
+
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -169,26 +179,22 @@ export default async function handler(req, res) {
       const size = parseInt(pageSize) || 24;
       const minDisc = parseInt(lowerDiscount) || 50;
 
-      // ITAD — En iyi indirimler, minimum %40 indirim, TR fiyatları
+      // ITAD — En iyi indirimler, minimum %30 indirim, TR fiyatları
       let itadDeals = [];
       try {
         const r = await fetch(
-          `${ITAD_BASE}/deals/v2?key=${ITAD_KEY}&country=${tr}&limit=50&offset=0`
+          `${ITAD_BASE}/deals/v2?key=${ITAD_KEY}&country=${tr}&limit=60&offset=0&sort=cut:desc`
         );
         if (r.ok) {
           const d = await r.json();
           itadDeals = (d.list || [])
-            // Minimum %40 indirim filtresi
-            .filter(g => (g.deal?.cut || 0) >= 40)
-            // Bilinen mağazalar
-            .filter(g => g.shop?.id && !g.shop.id.includes('gamersgate'))
-            // Fiyatı olan oyunlar
+            .filter(g => (g.deal?.cut || 0) >= 20)
             .filter(g => g.deal?.regular?.amount > 0)
-            // Başlığı olan oyunlar
+            .filter(g => g.deal?.price?.amount < g.deal?.regular?.amount)
             .filter(g => g.title && g.title.length > 0)
-            // ASCII olmayan (Japonca, Çince vb.) başlıkları filtrele
-            .filter(g => /^[\x00-\x7F\u00C0-\u024F\u0100-\u017F\s]+$/.test(g.title))
-            .slice(0, 24)
+            .filter(g => /^[\x00-\x7F\u00C0-\u024F\u0100-\u017F\s\-\'\:\.\,\!]+$/.test(g.title))
+            .filter(g => !isDLCTitle(g.title))
+            .slice(0, 30)
             .map(g => ({
               title: g.title,
               platform: g.shop?.id?.includes('xbox') ? 'xbox' :
@@ -210,17 +216,19 @@ export default async function handler(req, res) {
         }
       } catch(e) {}
 
-      // CheapShark yedek olarak dene (blok yoksa)
+      // CheapShark — doğru parametrelerle
       let cheapDeals = [];
       try {
         const r = await fetch(
-          `${CHEAPSHARK}/deals?pageSize=24&sortBy=Savings&desc=1&lowerDiscount=50`,
+          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&lowerDiscount=20&upperPrice=200`,
           { headers: { 'User-Agent': 'GameDealApp/1.0' } }
         );
         if (r.ok) {
           const raw = await r.json();
           cheapDeals = raw
             .filter(g => !g.error)
+            .filter(g => parseFloat(g.savings) >= 20)
+            .filter(g => parseFloat(g.salePrice) < parseFloat(g.normalPrice))
             .map(g => ({
               title: g.title,
               platform: g.storeID === '13' ? 'epic' :
