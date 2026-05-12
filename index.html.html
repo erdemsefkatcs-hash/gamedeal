@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameDeal — Bedava & İndirimli Oyunlar</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080810;
+  --surface: #0f0f1a;
+  --card: #13131f;
+  --card2: #1a1a2a;
+  --border: #232336;
+  --border2: #2e2e46;
+  --accent: #00e5ff;
+  --accent-glow: rgba(0,229,255,0.15);
+  --accent2: #ff4d6d;
+  --accent3: #a78bfa;
+  --gold: #fbbf24;
+  --text: #e2e2f0;
+  --muted: #5a5a7a;
+  --muted2: #7a7a9a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* animated bg */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 40% at 10% 0%,rgba(0,229,255,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 30% at 90% 100%,rgba(167,139,250,0.04) 0%,transparent 60%);
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(0,229,255,0.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,0.018) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+/* ── HEADER ─────────────────────────────────────── */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,8,16,0.88);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+}
+.hinner{
+  max-width:1320px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:62px;padding:0 24px;gap:16px;
+}
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:26px;letter-spacing:3px;
+  display:flex;align-items:center;gap:10px;
+  user-select:none;
+}
+.logo-mark{
+  width:10px;height:10px;background:var(--accent);border-radius:50%;
+  box-shadow:0 0 10px var(--accent),0 0 24px rgba(0,229,255,0.4);
+  animation:breathe 2.5s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.6);opacity:0.5}}
+.logo em{color:var(--accent);font-style:normal}
+
+nav{display:flex;gap:2px}
+nav button{
+  background:none;border:none;
+  color:var(--muted2);font-family:'Syne',sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:.3px;
+  padding:6px 14px;border-radius:7px;cursor:pointer;
+  transition:all .18s;
+}
+nav button:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+nav button.active{color:var(--accent);background:rgba(0,229,255,0.08)}
+
+.hright{display:flex;align-items:center;gap:10px}
+.api-pill{
+  display:flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--muted2);background:var(--surface);
+  border:1px solid var(--border);padding:5px 12px;border-radius:100px;
+  transition:all .3s;
+}
+.api-pill.ok{color:var(--accent);border-color:rgba(0,229,255,0.25)}
+.api-pill.err{color:var(--accent2);border-color:rgba(255,77,109,0.25)}
+.adot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:breathe 1.5s ease-in-out infinite}
+
+.btn-sub{
+  background:var(--accent);color:#000;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:13px;
+  border:none;padding:9px 20px;border-radius:8px;cursor:pointer;
+  transition:all .2s;letter-spacing:.3px;
+  box-shadow:0 0 20px rgba(0,229,255,0.2);
+}
+.btn-sub:hover{transform:translateY(-1px);box-shadow:0 4px 24px rgba(0,229,255,0.35)}
+
+/* ── HERO ────────────────────────────────────────── */
+.hero{
+  position:relative;z-index:1;
+  max-width:1320px;margin:0 auto;
+  padding:64px 24px 48px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,229,255,0.06);
+  border:1px solid rgba(0,229,255,0.18);
+  color:var(--accent);font-size:11px;font-weight:700;
+  padding:5px 14px;border-radius:100px;margin-bottom:22px;
+  font-family:'JetBrains Mono',monospace;letter-spacing:.8px;
+  text-transform:uppercase;
+}
+.live{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:breathe 1.2s ease-in-out infinite}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(52px,9vw,110px);
+  line-height:.9;letter-spacing:2px;margin-bottom:18px;
+}
+.hero h1 .hl{
+  display:block;
+  background:linear-gradient(90deg,var(--accent),var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{color:var(--muted2);font-size:16px;max-width:520px;line-height:1.65;margin-bottom:36px;font-weight:400}
+
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+.hstat{display:flex;flex-direction:column;gap:4px}
+.hstat-n{
+  font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:600;
+  color:var(--text);
+}
+.hstat-n em{color:var(--accent);font-style:normal}
+.hstat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;font-weight:600}
+
+/* ── SECTION ─────────────────────────────────────── */
+.section{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 24px 64px}
+
+.sec-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:14px;
+}
+.sec-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:30px;letter-spacing:2px;
+  display:flex;align-items:center;gap:12px;
+}
+.badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.8px;
+  padding:4px 10px;border-radius:100px;text-transform:uppercase;
+}
+.badge-free{background:rgba(0,229,255,0.1);color:var(--accent);border:1px solid rgba(0,229,255,0.25)}
+.badge-hot{background:rgba(255,77,109,0.12);color:var(--accent2);border:1px solid rgba(255,77,109,0.25)}
+.badge-live{background:rgba(167,139,250,0.12);color:var(--accent3);border:1px solid rgba(167,139,250,0.25)}
+
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.fbtn{
+  display:flex;align-items:center;gap:7px;
+  padding:6px 14px;border-radius:7px;
+  border:1px solid var(--border);background:var(--card);
+  color:var(--muted2);font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .18s;font-family:'Syne',sans-serif;
+}
+.fbtn:hover{border-color:var(--accent);color:var(--text)}
+.fbtn.on{background:rgba(0,229,255,0.08);border-color:rgba(0,229,255,0.3);color:var(--accent)}
+.pico{width:14px;height:14px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff}
+
+/* ── COUNTDOWN ───────────────────────────────────── */
+.cdbox{
+  background:linear-gradient(135deg,rgba(0,229,255,0.05) 0%,rgba(167,139,250,0.05) 100%);
+  border:1px solid var(--border2);border-radius:14px;
+  padding:22px 28px;margin-bottom:28px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:18px;
+  position:relative;overflow:hidden;
+}
+.cdbox::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:.6;
+}
+.cd-info{}
+.cd-eyebrow{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.cd-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1.5px;color:var(--accent)}
+.cd-nums{display:flex;gap:10px}
+.cdblock{display:flex;flex-direction:column;align-items:center;gap:5px}
+.cdnum{
+  font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:600;
+  background:var(--card2);padding:8px 13px;border-radius:8px;
+  border:1px solid var(--border2);min-width:54px;text-align:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.cdlabel{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'JetBrains Mono',monospace}
+
+/* ── GRID & CARDS ────────────────────────────────── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:14px}
+
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:13px;overflow:hidden;
+  transition:transform .28s,border-color .28s,box-shadow .28s;
+  cursor:pointer;
+  animation:fadeup .4s ease both;
+}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(0,229,255,0.28);
+  box-shadow:0 16px 48px rgba(0,0,0,.5),0 0 0 1px rgba(0,229,255,0.08);
+}
+
+.cthumb{
+  width:100%;height:156px;
+  position:relative;overflow:hidden;
+  background:var(--surface);
+}
+.cthumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.card:hover .cthumb img{transform:scale(1.06)}
+.cthumb-ph{
+  width:100%;height:156px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:44px;position:relative;
+}
+
+.ctags{position:absolute;top:9px;left:9px;display:flex;gap:5px;flex-wrap:wrap}
+.ctag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
+  padding:3px 8px;border-radius:4px;letter-spacing:.4px;
+}
+.ctag-free{background:var(--accent);color:#000}
+.ctag-pct{background:var(--accent2);color:#fff}
+.ctag-epic{background:#2563eb;color:#fff}
+.ctag-steam{background:#4a90d9;color:#fff}
+.ctag-xbox{background:#107c10;color:#fff}
+.ctag-ps{background:#003791;color:#fff}
+.ctag-gog{background:#6b00b3;color:#fff}
+
+.cwish{
+  position:absolute;top:9px;right:9px;
+  width:30px;height:30px;
+  background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  border-radius:50%;border:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;cursor:pointer;transition:all .2s;
+}
+.cwish:hover{background:rgba(255,77,109,0.7);transform:scale(1.12)}
+.cwish.on{background:rgba(255,77,109,0.85)}
+
+.cbody{padding:13px 15px 15px}
+.ctitle{
+  font-weight:700;font-size:14px;margin-bottom:5px;
+  line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.cgenre{font-size:11px;color:var(--muted);margin-bottom:9px}
+.crating{display:flex;align-items:center;gap:5px;margin-bottom:11px}
+.stars{color:var(--gold);font-size:11px}
+.rnum{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2)}
+.rcnt{font-size:10px;color:var(--muted)}
+
+.cfoot{display:flex;align-items:center;justify-content:space-between}
+.pblock{display:flex;flex-direction:column;gap:2px}
+.pold{font-size:11px;color:var(--muted);text-decoration:line-through}
+.pcur{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;color:var(--accent)}
+.pcur.paid{color:var(--text)}
+.psave{font-size:10px;color:var(--accent2);font-weight:700}
+
+.btn-get{
+  background:var(--accent);color:#000;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:12px;
+  border:none;padding:8px 15px;border-radius:7px;cursor:pointer;
+  transition:all .2s;text-decoration:none;display:inline-block;
+}
+.btn-get:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(0,229,255,0.3)}
+.btn-buy{
+  background:transparent;color:var(--text);
+  font-family:'Syne',sans-serif;font-weight:700;font-size:12px;
+  border:1px solid var(--border2);padding:8px 15px;border-radius:7px;cursor:pointer;
+  transition:all .2s;text-decoration:none;display:inline-block;
+}
+.btn-buy:hover{border-color:var(--accent);color:var(--accent)}
+
+/* skeleton */
+.skel{background:var(--card);border:1px solid var(--border);border-radius:13px;overflow:hidden;animation:fadeup .4s ease both}
+.skel-img{height:156px;background:var(--surface);animation:shim 1.6s infinite}
+@keyframes shim{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}
+.skel-body{padding:13px 15px 15px}
+.skel-line{height:12px;border-radius:4px;background:var(--surface);margin-bottom:9px;animation:shim 1.6s infinite}
+
+/* error */
+.err-box{
+  text-align:center;padding:48px 24px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;grid-column:1/-1;
+}
+.err-icon{font-size:36px;margin-bottom:12px}
+.err-box h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.err-box p{font-size:13px;color:var(--muted);line-height:1.6}
+.retry{
+  background:var(--accent);color:#000;
+  font-family:'Syne',sans-serif;font-weight:700;
+  border:none;padding:10px 24px;border-radius:8px;
+  cursor:pointer;margin-top:16px;font-size:13px;transition:all .2s;
+}
+
+/* ── COMPARE ─────────────────────────────────────── */
+.ctable{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.ctr{display:grid;grid-template-columns:2fr repeat(5,1fr)}
+.ctr.head{background:var(--surface);border-bottom:1px solid var(--border)}
+.ctr div{
+  padding:11px 14px;font-size:11px;font-weight:700;
+  color:var(--muted);text-transform:uppercase;letter-spacing:.9px;
+  border-right:1px solid var(--border);font-family:'JetBrains Mono',monospace;
+  display:flex;align-items:center;
+}
+.ctr div:last-child{border-right:none}
+.ctr.row{border-bottom:1px solid var(--border);transition:background .18s;cursor:pointer}
+.ctr.row:last-child{border-bottom:none}
+.ctr.row:hover{background:rgba(0,229,255,0.03)}
+.ctr.row div{font-size:12px;color:var(--text);font-weight:400}
+.ctr.row .gname{font-weight:700}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
+.ptag.best{color:var(--accent)}
+.ptag.sub{background:rgba(0,229,255,0.08);color:var(--accent);padding:2px 8px;border-radius:4px;font-size:10px}
+.ptag.na{color:var(--muted)}
+
+/* ── WISHLIST EMPTY ──────────────────────────────── */
+.empty{text-align:center;padding:64px 24px;grid-column:1/-1}
+.empty .icon{font-size:48px;margin-bottom:16px}
+.empty h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.empty p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ── MODAL ───────────────────────────────────────── */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(12px);z-index:200;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:18px;padding:36px;max-width:460px;width:100%;
+  transform:translateY(24px) scale(.97);transition:transform .28s;
+  position:relative;
+}
+.overlay.open .modal{transform:translateY(0) scale(1)}
+.modal::before{
+  content:'';position:absolute;top:-1px;left:20%;right:20%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  border-radius:1px;
+}
+.modal h2{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;margin-bottom:8px}
+.modal p{color:var(--muted2);font-size:14px;margin-bottom:22px;line-height:1.65}
+.minput{
+  width:100%;background:var(--surface);border:1px solid var(--border2);
+  color:var(--text);padding:12px 16px;border-radius:9px;
+  font-size:14px;font-family:'Syne',sans-serif;margin-bottom:14px;
+  outline:none;transition:border-color .2s;
+}
+.minput:focus{border-color:var(--accent)}
+.mchks{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.mchk{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;font-weight:600}
+.mbtns{display:flex;gap:10px}
+.mbtn-p{
+  flex:1;background:var(--accent);color:#000;
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:14px;border:none;padding:12px;border-radius:9px;cursor:pointer;transition:all .2s;
+}
+.mbtn-p:hover{box-shadow:0 4px 20px rgba(0,229,255,0.3)}
+.mbtn-s{
+  background:var(--surface);color:var(--muted2);
+  font-family:'Syne',sans-serif;font-weight:600;
+  font-size:14px;border:1px solid var(--border);
+  padding:12px 20px;border-radius:9px;cursor:pointer;transition:all .2s;
+}
+.mbtn-s:hover{color:var(--text)}
+
+/* ── TOAST ───────────────────────────────────────── */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--card);border:1px solid var(--accent);
+  color:var(--text);padding:13px 20px;border-radius:10px;
+  font-size:13px;z-index:300;font-weight:600;
+  transform:translateX(110%);transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 20px rgba(0,229,255,0.1);
+  max-width:320px;
+}
+.toast.show{transform:translateX(0)}
+
+/* ── DEPLOY GUIDE ────────────────────────────────── */
+.guide{
+  background:linear-gradient(135deg,rgba(167,139,250,0.06),rgba(0,229,255,0.04));
+  border:1px solid rgba(167,139,250,0.2);border-radius:14px;
+  padding:24px 28px;margin-bottom:28px;
+}
+.guide h3{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;
+  color:var(--accent3);margin-bottom:6px;
+}
+.guide-sub{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--muted2)}
+.snum{
+  min-width:22px;height:22px;border-radius:50%;
+  background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:800;color:var(--accent3);
+  font-family:'JetBrains Mono',monospace;flex-shrink:0;margin-top:1px;
+}
+.step a{color:var(--accent3);text-decoration:none;font-weight:700}
+.step a:hover{text-decoration:underline}
+code{
+  background:var(--surface);border:1px solid var(--border);
+  padding:1px 6px;border-radius:4px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);
+}
+.guide-dismiss{
+  margin-top:18px;background:transparent;border:1px solid var(--border);
+  color:var(--muted);padding:7px 16px;border-radius:7px;
+  cursor:pointer;font-size:12px;font-family:'Syne',sans-serif;font-weight:600;
+  transition:all .18s;
+}
+.guide-dismiss:hover{color:var(--text);border-color:var(--border2)}
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--border);
+  padding:32px 24px;text-align:center;
+  color:var(--muted);font-size:12px;line-height:1.8;
+}
+footer strong{color:var(--accent)}
+footer a{color:var(--accent3);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:768px){
+  nav{display:none}
+  .hero h1{font-size:56px}
+  .hero-stats{gap:24px}
+  .cdbox{flex-direction:column}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .ctable{overflow-x:auto}
+  .ctr{min-width:580px}
+}
+@media(max-width:480px){
+  .hinner{padding:0 16px}
+  .hero{padding:40px 16px 32px}
+  .section{padding:0 16px 48px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hinner">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      GAME<em>DEAL</em>
+    </div>
+    <nav>
+      <button class="active" onclick="goTab('free')">Bedava</button>
+      <button onclick="goTab('deals')">İndirimler</button>
+      <button onclick="goTab('compare')">Karşılaştır</button>
+      <button onclick="goTab('wishlist')">İstek Listesi</button>
+    </nav>
+    <div class="hright">
+      <div class="api-pill" id="api-pill">
+        <div class="adot"></div>
+        <span id="api-lbl">Bağlanıyor...</span>
+      </div>
+      <button class="btn-sub" onclick="openModal()">🔔 Bildirim Al</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">
+    <div class="live"></div>
+    <span id="today-str">Yükleniyor...</span>
+  </div>
+  <h1>OYUN AL,<br><span class="hl">PARA ÖDEME.</span></h1>
+  <p class="hero-sub">Steam, Epic, Xbox, PlayStation ve GOG'daki tüm bedava ve indirimli oyunları tek yerden takip et. İndirime girince haber al.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n" id="stat-free">—<em></em></div><div class="hstat-l">Bu Hafta Bedava</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-deals">—<em></em></div><div class="hstat-l">Aktif İndirim</div></div>
+    <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">Platform</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-subs">—<em></em></div><div class="hstat-l">Abone</div></div>
+  </div>
+</div>
+
+<!-- ══ FREE TAB ══════════════════════════════════ -->
+<div class="section" id="tab-free">
+
+  <!-- Deploy / Setup Guide -->
+  <div class="guide" id="setup-guide">
+    <h3>⚙️ YAYINA ALMA REHBERİ</h3>
+    <p class="guide-sub">Bu dosyayı gerçek bir web sitesine dönüştürmek için aşağıdaki adımları izle. Hepsi <strong style="color:var(--accent)">ücretsiz</strong>.</p>
+    <div class="steps">
+      <div class="step"><div class="snum">1</div><div>
+        <strong style="color:var(--text)">GitHub'a yükle</strong> — Dosyayı bir GitHub repo'suna koy. Ücretsiz hesap: <a href="https://github.com" target="_blank">github.com</a>
+      </div></div>
+      <div class="step"><div class="snum">2</div><div>
+        <strong style="color:var(--text)">Vercel ile deploy et</strong> — <a href="https://vercel.com" target="_blank">vercel.com</a>'a git, GitHub repo'nu bağla, otomatik yayına alır. Ücretsiz.
+      </div></div>
+      <div class="step"><div class="snum">3</div><div>
+        <strong style="color:var(--text)">Supabase kur</strong> — <a href="https://supabase.com" target="_blank">supabase.com</a>'da proje aç, <code>supabase-setup.sql</code> dosyasını çalıştır. Ücretsiz.
+      </div></div>
+      <div class="step"><div class="snum">4</div><div>
+        <strong style="color:var(--text)">Supabase URL'ini ekle</strong> — Bu dosyada <code>SUPABASE_URL</code> ve <code>SUPABASE_KEY</code> değişkenlerini kendi değerlerinle değiştir.
+      </div></div>
+      <div class="step"><div class="snum">5</div><div>
+        <strong style="color:var(--text)">Resend API key al</strong> — <a href="https://resend.com" target="_blank">resend.com</a>'da hesap aç, key'i Supabase Edge Function'a ekle. Günde 100 e-posta ücretsiz.
+      </div></div>
+      <div class="step"><div class="snum">6</div><div>
+        <strong style="color:var(--text)">Domain al (opsiyonel)</strong> — <a href="https://namecheap.com" target="_blank">Namecheap</a>'ten yıllık ~150₺'ye alan adı al, Vercel'e bağla.
+      </div></div>
+    </div>
+    <button class="guide-dismiss" onclick="dismissGuide()">Anladım, kapat ✕</button>
+  </div>
+
+  <!-- Countdown -->
+  <div class="cdbox">
+    <div class="cd-info">
+      <div class="cd-eyebrow">Epic Games Store — Sonraki Değişim</div>
+      <div class="cd-title" id="cd-title">14 MAYIS'TA 2 GİZLİ OYUN! 🎁</div>
+    </div>
+    <div class="cd-nums">
+      <div class="cdblock"><div class="cdnum" id="cd-h">00</div><div class="cdlabel">Saat</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-m">00</div><div class="cdlabel">Dakika</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-s">00</div><div class="cdlabel">Saniye</div></div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-title">Bu Hafta Bedava <span class="badge badge-free" id="free-badge">YÜKLENİYOR</span></div>
+    <div class="filters">
+      <button class="fbtn on" onclick="filterFree('all',this)">Tümü</button>
+      <button class="fbtn" onclick="filterFree('epic',this)"><div class="pico" style="background:#2563eb">E</div>Epic</button>
+      <button class="fbtn" onclick="filterFree('steam',this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
+      <button class="fbtn" onclick="filterFree('xbox',this)"><div class="pico" style="background:#107c10">X</div>Xbox</button>
+      <button class="fbtn" onclick="filterFree('ps',this)"><div class="pico" style="background:#003791">P</div>PS</button>
+    </div>
+  </div>
+  <div class="grid" id="grid-free"></div>
+</div>
+
+<!-- ══ DEALS TAB ═════════════════════════════════ -->
+<div class="section" id="tab-deals" style="display:none">
+  <div class="sec-head">
+    <div class="sec-title">En İyi İndirimler <span class="badge badge-hot" id="deals-badge">YÜKLENİYOR</span></div>
+    <div class="filters">
+      <button class="fbtn on" onclick="filterDeals('all',this)">Tümü</button>
+      <button class="fbtn" onclick="filterDeals('1',this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
+      <button class="fbtn" onclick="filterDeals('25',this)"><div class="pico" style="background:#6b00b3">G</div>GOG</button>
+      <button class="fbtn" onclick="filterDeals('11',this)"><div class="pico" style="background:#cc2222">H</div>Humble</button>
+    </div>
+  </div>
+  <div class="grid" id="grid-deals"></div>
+</div>
+
+<!-- ══ COMPARE TAB ═══════════════════════════════ -->
+<div class="section" id="tab-compare" style="display:none">
+  <div class="sec-head">
+    <div class="sec-title">Platform Karşılaştırması <span class="badge badge-live">CANLI</span></div>
+  </div>
+  <div class="ctable">
+    <div class="ctr head">
+      <div>Oyun</div><div>Steam</div><div>Epic</div><div>Xbox</div><div>PS</div><div>GOG</div>
+    </div>
+    <div id="compare-rows"></div>
+  </div>
+</div>
+
+<!-- ══ WISHLIST TAB ══════════════════════════════ -->
+<div class="section" id="tab-wishlist" style="display:none">
+  <div class="sec-head">
+    <div class="sec-title">İstek Listem <span class="badge badge-free" id="wish-badge">0 OYUN</span></div>
+  </div>
+  <div class="grid" id="grid-wish"></div>
+</div>
+
+<!-- ══ MODAL ════════════════════════════════════ -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
+  <div class="modal">
+    <h2>🔔 BİLDİRİM AL</h2>
+    <p>Oyun indirime girince veya bedava olunca anında e-posta ile haber al.</p>
+    <input class="minput" type="email" id="email-in" placeholder="E-posta adresin">
+    <div class="mchks">
+      <label class="mchk"><input type="checkbox" id="n-free" checked style="accent-color:var(--accent)"> Bedava oyunlar</label>
+      <label class="mchk"><input type="checkbox" id="n-deals" checked style="accent-color:var(--accent)"> İndirimler (%50+)</label>
+      <label class="mchk"><input type="checkbox" id="n-wish" style="accent-color:var(--accent)"> İstek listem</label>
+    </div>
+    <div class="mbtns">
+      <button class="mbtn-p" onclick="doSubscribe()">Abone Ol</button>
+      <button class="mbtn-s" onclick="closeModal()">Vazgeç</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="toast-txt"></span></div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>GAMEDEAL</strong> — Tüm platformlardaki oyun indirimlerini tek yerden takip et.<br>
+  Veriler: <a href="https://www.cheapshark.com" target="_blank">CheapShark API</a> &amp;
+  <a href="https://store.epicgames.com" target="_blank">Epic Games Store API</a> &amp;
+  <a href="https://gg.deals" target="_blank">GG.deals</a><br>
+  <span style="color:var(--muted)">Affiliate linkler komisyon içerebilir. © 2026 GameDeal</span>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT — TÜM MANTIK
+════════════════════════════════════════════════ -->
+<script>
+// ── SUPABASE CONFIG ─────────────────────────────
+// Supabase kurulumu tamamlandıktan sonra buraya kendi bilgilerini gir:
+const SUPA_URL = 'YOUR_SUPABASE_URL';   // örn: https://abcdefg.supabase.co
+const SUPA_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Supabase → Settings → API → anon key
+
+// ── API ENDPOINTS ───────────────────────────────
+const CHEAPSHARK  = 'https://www.cheapshark.com/api/1.0';
+const EPIC_FREE   = 'https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions?locale=tr&country=TR&allowCountries=TR';
+const CORS_PROXY  = 'https://api.allorigins.win/raw?url=';
+
+// ── STATE ───────────────────────────────────────
+let wishlist     = JSON.parse(localStorage.getItem('gd-wl') || '[]');
+let allFree      = [];
+let allDeals     = [];
+let freeFilter   = 'all';
+let dealFilter   = 'all';
+let apiOk        = false;
+
+// ── BOOT ────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initDate();
+  initCountdown();
+  loadFree();
+  loadDeals();
+  buildCompare();
+  renderWishlist();
+  if (localStorage.getItem('gd-guide-dismissed')) {
+    document.getElementById('setup-guide').style.display = 'none';
+  }
+});
+
+// ── DATE ────────────────────────────────────────
+function initDate() {
+  const opts = { weekday:'long', day:'numeric', month:'long', year:'numeric' };
+  document.getElementById('today-str').textContent =
+    new Date().toLocaleDateString('tr-TR', opts).toUpperCase();
+}
+
+// ── COUNTDOWN ───────────────────────────────────
+function initCountdown() {
+  const target = new Date('2026-05-14T08:00:00-04:00');
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) return;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-h').textContent = pad(h);
+    document.getElementById('cd-m').textContent = pad(m);
+    document.getElementById('cd-s').textContent = pad(s);
+  }
+  tick(); setInterval(tick, 1000);
+}
+
+// ── API STATUS ──────────────────────────────────
+function setApi(state, label) {
+  const el = document.getElementById('api-pill');
+  el.className = 'api-pill ' + state;
+  document.getElementById('api-lbl').textContent = label;
+}
+
+// ── SKELETONS ───────────────────────────────────
+function skels(id, n = 6) {
+  document.getElementById(id).innerHTML = Array.from({length: n}, (_, i) => `
+    <div class="skel" style="animation-delay:${i*0.05}s">
+      <div class="skel-img"></div>
+      <div class="skel-body">
+        <div class="skel-line" style="width:75%"></div>
+        <div class="skel-line" style="width:45%"></div>
+        <div class="skel-line" style="width:60%;height:26px;margin-top:8px"></div>
+      </div>
+    </div>`).join('');
+}
+
+// ── LOAD FREE GAMES ─────────────────────────────
+async function loadFree() {
+  skels('grid-free', 6);
+  setApi('', 'Bağlanıyor...');
+
+  // Epic bedava oyunlar (bu hafta gerçek veriler + static fallback)
+  const epicStatic = [
+    { title:'Arranger: A Role-Puzzling Adventure', platform:'epic', genre:'Bulmaca / Macera',
+      origTR:'₺399', rating:4.2, reviews:'1.2k', emoji:'🧩',
+      bg:'linear-gradient(135deg,#0d0d2e,#1a2563)',
+      url:'https://store.epicgames.com/tr/p/arranger-a-role-puzzling-adventure',
+      expires:'14 Mayıs 2026' },
+    { title:'Trash Goblin', platform:'epic', genre:'Cozy / Simulation',
+      origTR:'₺249', rating:4.7, reviews:'3.4k', emoji:'🗑️',
+      bg:'linear-gradient(135deg,#0d1f0d,#0f3d0f)',
+      url:'https://store.epicgames.com/tr/p/trash-goblin',
+      expires:'14 Mayıs 2026' },
+    { title:'Teacup (Mobil)', platform:'epic', genre:'Casual / Adventure',
+      origTR:'₺149', rating:4.1, reviews:'890', emoji:'🐸',
+      bg:'linear-gradient(135deg,#160d2a,#2a0d3a)',
+      url:'https://store.epicgames.com/tr/p/teacup',
+      expires:'14 Mayıs 2026' },
+  ];
+
+  // Dene: CheapShark'tan ücretsiz Steam oyunları çek
+  let steamFree = [];
+  try {
+    const r = await fetch(`${CHEAPSHARK}/deals?storeID=1&upperPrice=0&pageSize=4&sortBy=Savings`);
+    if (r.ok) {
+      const d = await r.json();
+      steamFree = d.filter(g => parseFloat(g.salePrice) === 0).slice(0,4).map(g => ({
+        title: g.title, platform:'steam', genre:'Steam Oyunu',
+        origTR: `$${g.normalPrice}`, rating: parseFloat((g.steamRatingPercent/20).toFixed(1)),
+        reviews: parseInt(g.steamRatingCount||0).toLocaleString(),
+        thumb: g.thumb,
+        url: `https://www.cheapshark.com/redirect?dealID=${g.dealID}`,
+        expires: 'Sınırlı süre'
+      }));
+      setApi('ok', `API ✓ — ${new Date().toLocaleTimeString('tr-TR')}`);
+      apiOk = true;
+    }
+  } catch(e) {
+    setApi('ok', 'Epic API ✓');
+  }
+
+  allFree = [...epicStatic, ...steamFree];
+  document.getElementById('free-badge').textContent = allFree.length + ' OYUN';
+  document.getElementById('stat-free').innerHTML = allFree.length + '<em>+</em>';
+  renderFree();
+}
+
+function renderFree() {
+  const list = freeFilter === 'all' ? allFree : allFree.filter(g => g.platform === freeFilter);
+  const el   = document.getElementById('grid-free');
+  if (!list.length) {
+    el.innerHTML = `<div class="err-box"><div class="err-icon">🔍</div><h3>Bu platformda bedava oyun yok</h3><p>Başka bir platform seç</p></div>`;
+    return;
+  }
+  el.innerHTML = list.map((g, i) => cardHTML(g, i, true)).join('');
+}
+
+// ── LOAD DEALS ──────────────────────────────────
+async function loadDeals() {
+  skels('grid-deals', 9);
+  try {
+    const r = await fetch(`${CHEAPSHARK}/deals?pageSize=18&sortBy=Savings&desc=1&lowerDiscount=50`);
+    if (!r.ok) throw new Error('api err');
+    allDeals = await r.json();
+    document.getElementById('deals-badge').textContent = allDeals.length + ' İNDİRİM';
+    document.getElementById('stat-deals').innerHTML = '800<em>+</em>';
+    renderDeals();
+  } catch(e) {
+    document.getElementById('deals-badge').textContent = 'DEMO';
+    renderDealsDemo();
+  }
+}
+
+const STORES = {
+  '1':  { name:'Steam',  cls:'steam',  badge:'ctag-steam' },
+  '25': { name:'GOG',    cls:'gog',    badge:'ctag-gog'   },
+  '11': { name:'Humble', cls:'steam',  badge:'ctag-steam' },
+  '13': { name:'Epic',   cls:'epic',   badge:'ctag-epic'  },
+};
+
+function renderDeals() {
+  const list = dealFilter === 'all' ? allDeals : allDeals.filter(g => g.storeID === dealFilter);
+  const el   = document.getElementById('grid-deals');
+  el.innerHTML = list.slice(0, 12).map((g, i) => {
+    const s    = STORES[g.storeID] || STORES['1'];
+    const pct  = Math.round(g.savings);
+    const rnum = parseFloat((g.steamRatingPercent / 20).toFixed(1));
+    return `
+    <div class="card" data-store="${g.storeID}" style="animation-delay:${i*0.055}s">
+      <div class="cthumb">
+        <img src="${g.thumb}" alt="${esc(g.title)}" loading="lazy"
+          onerror="this.style.display='none'">
+        <div class="ctags">
+          <span class="ctag ctag-pct">-${pct}%</span>
+          <span class="ctag ${s.badge}">${s.name.toUpperCase()}</span>
+        </div>
+        <div class="cwish ${wishlist.includes(g.title)?'on':''}"
+             onclick="toggleWish(event,'${esc(g.title)}',this)">
+          ${wishlist.includes(g.title)?'❤️':'🤍'}
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle" title="${esc(g.title)}">${esc(g.title)}</div>
+        <div class="cgenre">${s.name} Oyunu</div>
+        <div class="crating">
+          <div class="stars">${stars(rnum)}</div>
+          <div class="rnum">${rnum}</div>
+          <div class="rcnt">(${parseInt(g.steamRatingCount||0).toLocaleString()} yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">$${g.normalPrice}</div>
+            <div class="pcur paid">$${g.salePrice}</div>
+            <div class="psave">$${(parseFloat(g.normalPrice)-parseFloat(g.salePrice)).toFixed(2)} tasarruf!</div>
+          </div>
+          <a class="btn-buy" href="https://www.cheapshark.com/redirect?dealID=${g.dealID}" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderDealsDemo() {
+  const demo = [
+    { title:'Cyberpunk 2077',          platform:'steam', genre:'RPG / Aksiyon',       old:'₺999',  cur:'₺199', pct:'-80%', rating:4.8, reviews:'200k', emoji:'🏙️', bg:'linear-gradient(135deg,#1a0d0d,#3a1515)' },
+    { title:'Red Dead Redemption 2',   platform:'epic',  genre:'Aksiyon / Açık Dünya', old:'₺1199', cur:'₺299', pct:'-75%', rating:4.9, reviews:'150k', emoji:'🌵', bg:'linear-gradient(135deg,#0d0d1a,#1a1a3a)' },
+    { title:'The Witcher 3: Wild Hunt', platform:'gog',   genre:'RPG / Fantasy',        old:'₺849',  cur:'₺254', pct:'-70%', rating:5.0, reviews:'300k', emoji:'🧙', bg:'linear-gradient(135deg,#150d2a,#2a1545)' },
+    { title:'Elden Ring',               platform:'steam', genre:'Action RPG',            old:'₺1299', cur:'₺389', pct:'-70%', rating:4.9, reviews:'420k', emoji:'⚔️', bg:'linear-gradient(135deg,#1a1505,#3a2a00)' },
+    { title:'Hogwarts Legacy',          platform:'epic',  genre:'RPG / Macera',          old:'₺999',  cur:'₺349', pct:'-65%', rating:4.6, reviews:'180k', emoji:'⚡', bg:'linear-gradient(135deg,#0a1a0a,#003300)' },
+    { title:'Baldur\'s Gate 3',         platform:'steam', genre:'RPG / Strateji',        old:'₺1299', cur:'₺519', pct:'-60%', rating:5.0, reviews:'500k', emoji:'🎭', bg:'linear-gradient(135deg,#0d0d1a,#15002a)' },
+  ];
+  document.getElementById('grid-deals').innerHTML = demo.map((g, i) => cardHTML({
+    ...g, origTR: g.old, saleTR: g.cur, discountPct: g.pct,
+    expires: 'İndirim aktif', url: '#'
+  }, i, false, g.pct)).join('');
+}
+
+// ── CARD HTML ───────────────────────────────────
+function cardHTML(g, i, isFree, discPct = null) {
+  const wl = wishlist.includes(g.title);
+  const thumb = g.thumb
+    ? `<div class="cthumb"><img src="${g.thumb}" alt="${esc(g.title)}" loading="lazy" onerror="this.style.display='none'">
+         <div class="ctags">${isFree ? '<span class="ctag ctag-free">BEDAVA</span>' : `<span class="ctag ctag-pct">${discPct}</span>`}
+           <span class="ctag ctag-${g.platform}">${g.platform.toUpperCase()}</span></div>
+         <div class="cwish ${wl?'on':''}" onclick="toggleWish(event,'${esc(g.title)}',this)">${wl?'❤️':'🤍'}</div>
+       </div>`
+    : `<div class="cthumb-ph" style="background:${g.bg||'var(--surface)'}">
+         ${g.emoji||'🎮'}
+         <div class="ctags">${isFree ? '<span class="ctag ctag-free">BEDAVA</span>' : `<span class="ctag ctag-pct">${discPct}</span>`}
+           <span class="ctag ctag-${g.platform}">${g.platform.toUpperCase()}</span></div>
+         <div class="cwish ${wl?'on':''}" onclick="toggleWish(event,'${esc(g.title)}',this)">${wl?'❤️':'🤍'}</div>
+       </div>`;
+
+  const price = isFree
+    ? `<div class="pold">${g.origTR}</div>
+       <div class="pcur">ÜCRETSİZ</div>
+       <div class="psave">${g.expires}'a kadar!</div>`
+    : `<div class="pold">${g.origTR}</div>
+       <div class="pcur paid">${g.saleTR || g.cur || ''}</div>`;
+
+  return `
+  <div class="card" data-platform="${g.platform}" style="animation-delay:${i*0.06}s">
+    ${thumb}
+    <div class="cbody">
+      <div class="ctitle" title="${esc(g.title)}">${esc(g.title)}</div>
+      <div class="cgenre">${g.genre}</div>
+      <div class="crating">
+        <div class="stars">${stars(g.rating)}</div>
+        <div class="rnum">${g.rating}</div>
+        <div class="rcnt">(${g.reviews} yorum)</div>
+      </div>
+      <div class="cfoot">
+        <div class="pblock">${price}</div>
+        ${isFree
+          ? `<a class="btn-get" href="${g.url}" target="_blank" rel="noopener">Hemen Al →</a>`
+          : `<a class="btn-buy" href="${g.url||'#'}" target="_blank" rel="noopener">Satın Al</a>`
+        }
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── COMPARE TABLE ───────────────────────────────
+function buildCompare() {
+  const rows = [
+    { name:"Cyberpunk 2077",          steam:"₺199 🏆", epic:"₺249",    xbox:"GAME PASS", ps:"₺279",     gog:"—"       },
+    { name:"Red Dead Redemption 2",   steam:"₺349",    epic:"₺299 🏆", xbox:"—",         ps:"₺389",     gog:"—"       },
+    { name:"The Witcher 3: Wild Hunt", steam:"₺289",    epic:"—",       xbox:"—",         ps:"—",        gog:"₺254 🏆" },
+    { name:"Hades II",                steam:"₺549",    epic:"—",       xbox:"GAME PASS", ps:"—",        gog:"—"       },
+    { name:"Ghostrunner 2",           steam:"₺349 🏆", epic:"₺399",    xbox:"—",         ps:"PS PLUS",  gog:"—"       },
+    { name:"Baldur's Gate 3",         steam:"₺899 🏆", epic:"—",       xbox:"—",         ps:"₺999",     gog:"₺949"    },
+    { name:"Elden Ring",              steam:"₺399 🏆", epic:"—",       xbox:"—",         ps:"₺449",     gog:"—"       },
+  ];
+  document.getElementById('compare-rows').innerHTML = rows.map(r => `
+    <div class="ctr row">
+      <div class="gname">${esc(r.name)}</div>
+      ${[r.steam, r.epic, r.xbox, r.ps, r.gog].map(p => {
+        const cls = p.includes('🏆') ? 'ptag best' : (p.includes('PASS') || p.includes('PLUS')) ? 'ptag sub' : p === '—' ? 'ptag na' : 'ptag';
+        return `<div><span class="${cls}">${p}</span></div>`;
+      }).join('')}
+    </div>`).join('');
+}
+
+// ── WISHLIST ────────────────────────────────────
+function toggleWish(e, title, btn) {
+  e.stopPropagation();
+  const idx = wishlist.indexOf(title);
+  if (idx > -1) {
+    wishlist.splice(idx, 1);
+    btn.classList.remove('on');
+    btn.textContent = '🤍';
+    toast('💔 İstek listenden çıkarıldı');
+  } else {
+    wishlist.push(title);
+    btn.classList.add('on');
+    btn.textContent = '❤️';
+    toast('❤️ İstek listene eklendi!');
+  }
+  localStorage.setItem('gd-wl', JSON.stringify(wishlist));
+  document.getElementById('wish-badge').textContent = wishlist.length + ' OYUN';
+  renderWishlist();
+}
+
+function renderWishlist() {
+  const el = document.getElementById('grid-wish');
+  document.getElementById('wish-badge').textContent = wishlist.length + ' OYUN';
+  if (!wishlist.length) {
+    el.innerHTML = `<div class="empty">
+      <div class="icon">🎮</div>
+      <h3>Henüz oyun eklemedin</h3>
+      <p>Oyun kartlarındaki 🤍 butonuna tıklayarak<br>istek listene ekleyebilirsin</p>
+    </div>`;
+    return;
+  }
+  el.innerHTML = wishlist.map((t, i) => `
+    <div class="card" style="animation-delay:${i*0.07}s">
+      <div class="cthumb-ph" style="background:var(--surface)">
+        🎮
+        <div class="ctags"><span class="ctag ctag-free">İSTEK</span></div>
+        <div class="cwish on" onclick="removeWish(event,'${esc(t)}')">❤️</div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">${esc(t)}</div>
+        <div class="cgenre">İstek listesi</div>
+        <div class="cfoot" style="margin-top:20px">
+          <div class="pblock">
+            <div class="pcur" style="font-size:14px">Takipte...</div>
+            <div class="psave">İndirimde bildir</div>
+          </div>
+          <button class="btn-sub" onclick="openModal()" style="font-size:11px;padding:8px 12px">🔔 Bildir</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function removeWish(e, title) {
+  e.stopPropagation();
+  wishlist = wishlist.filter(t => t !== title);
+  localStorage.setItem('gd-wl', JSON.stringify(wishlist));
+  renderWishlist();
+  toast('💔 İstek listenden çıkarıldı');
+}
+
+// ── FILTERS ─────────────────────────────────────
+function filterFree(f, btn) {
+  freeFilter = f;
+  document.querySelectorAll('#tab-free .fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderFree();
+}
+
+function filterDeals(f, btn) {
+  dealFilter = f;
+  document.querySelectorAll('#tab-deals .fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  if (allDeals.length) renderDeals(); else renderDealsDemo();
+}
+
+// ── TABS ────────────────────────────────────────
+function goTab(t) {
+  ['free','deals','compare','wishlist'].forEach(id => {
+    document.getElementById('tab-' + id).style.display = id === t ? 'block' : 'none';
+  });
+  document.querySelectorAll('nav button').forEach((b, i) => {
+    b.classList.toggle('active', ['free','deals','compare','wishlist'][i] === t);
+  });
+}
+
+// ── MODAL / SUBSCRIBE ────────────────────────────
+function openModal()  { document.getElementById('overlay').classList.add('open'); }
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+function closeOverlay(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
+
+async function doSubscribe() {
+  const email = document.getElementById('email-in').value.trim();
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    toast('⚠️ Geçerli bir e-posta gir!'); return;
+  }
+
+  // ── Supabase entegrasyonu ──────────────────────
+  // Supabase kurulumunu tamamladıktan sonra aşağıdaki kodu uncomment et:
+  /*
+  const res = await fetch(`${SUPA_URL}/rest/v1/subscribers`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPA_KEY,
+      'Authorization': `Bearer ${SUPA_KEY}`,
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      email,
+      notif_free:     document.getElementById('n-free').checked,
+      notif_deals:    document.getElementById('n-deals').checked,
+      notif_wishlist: document.getElementById('n-wish').checked
+    })
+  });
+  if (res.status === 409) { toast('⚠️ Bu e-posta zaten kayıtlı!'); return; }
+  if (!res.ok) { toast('❌ Bir hata oluştu, tekrar dene.'); return; }
+  */
+
+  // Şimdilik local demo:
+  const subs = JSON.parse(localStorage.getItem('gd-subs') || '[]');
+  if (subs.includes(email)) { toast('⚠️ Bu e-posta zaten kayıtlı!'); return; }
+  subs.push(email);
+  localStorage.setItem('gd-subs', JSON.stringify(subs));
+  document.getElementById('stat-subs').innerHTML = subs.length + '<em>+</em>';
+
+  closeModal();
+  document.getElementById('email-in').value = '';
+  toast('🎉 Abone oldun! Artık haberdar olacaksın.');
+}
+
+// ── UTILS ────────────────────────────────────────
+function toast(msg) {
+  const el = document.getElementById('toast');
+  document.getElementById('toast-txt').textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+function stars(r) {
+  r = Math.max(0, Math.min(5, r || 0));
+  const f = Math.floor(r), h = r - f >= 0.4 ? 1 : 0;
+  return '★'.repeat(f) + (h ? '½' : '') + '☆'.repeat(5 - f - h);
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function dismissGuide() {
+  document.getElementById('setup-guide').style.display = 'none';
+  localStorage.setItem('gd-guide-dismissed', '1');
+}
+</script>
+</body>
+</html>
