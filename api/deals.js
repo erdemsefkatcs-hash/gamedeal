@@ -169,49 +169,148 @@ export default async function handler(req, res) {
       const size = parseInt(pageSize) || 24;
       const minDisc = parseInt(lowerDiscount) || 50;
 
-      // CheapShark — Steam, GOG, Humble, Epic
-      let cheapDeals = [];
-      try {
-        const r = await fetch(
-          `${CHEAPSHARK}/deals?pageSize=${size}&sortBy=Savings&desc=1&lowerDiscount=${minDisc}`
-        );
-        cheapDeals = await r.json();
-      } catch(e) {}
-
-      // ITAD — Tüm platformlar
+      // ITAD — En iyi indirimler, minimum %40 indirim, TR fiyatları
       let itadDeals = [];
       try {
         const r = await fetch(
-          `${ITAD_BASE}/deals/v2?key=${ITAD_KEY}&country=${tr}&limit=24&offset=0`
+          `${ITAD_BASE}/deals/v2?key=${ITAD_KEY}&country=${tr}&limit=50&offset=0`
         );
         if (r.ok) {
           const d = await r.json();
-          itadDeals = (d.list || []).map(g => ({
-            title: g.title,
-            platform: g.shop?.id?.includes('xbox') ? 'xbox' :
-                      g.shop?.id?.includes('ubisoft') ? 'ubisoft' :
-                      g.shop?.id?.includes('epic') ? 'epic' :
-                      g.shop?.id?.includes('gog') ? 'gog' :
-                      g.shop?.id?.includes('humble') ? 'humble' : 'steam',
-            storeName: g.shop?.name || 'Store',
-            storeID: g.shop?.id || '1',
-            normalPrice: g.deal?.regular?.amount || 0,
-            salePrice: g.deal?.price?.amount || 0,
-            savings: g.deal?.cut || 0,
-            thumb: g.assets?.banner300 || '',
-            url: g.deal?.url || '#',
-            steamRatingPercent: 75,
-            steamRatingCount: 0,
-            isITAD: true
-          }));
+          itadDeals = (d.list || [])
+            // Minimum %40 indirim filtresi
+            .filter(g => (g.deal?.cut || 0) >= 40)
+            // Bilinen mağazalar
+            .filter(g => g.shop?.id && !g.shop.id.includes('gamersgate'))
+            // Fiyatı olan oyunlar
+            .filter(g => g.deal?.regular?.amount > 0)
+            // Başlığı olan oyunlar
+            .filter(g => g.title && g.title.length > 0)
+            // ASCII olmayan (Japonca, Çince vb.) başlıkları filtrele
+            .filter(g => /^[\x00-\x7F\u00C0-\u024F\u0100-\u017F\s]+$/.test(g.title))
+            .slice(0, 24)
+            .map(g => ({
+              title: g.title,
+              platform: g.shop?.id?.includes('xbox') ? 'xbox' :
+                        g.shop?.id?.includes('ubisoft') ? 'ubisoft' :
+                        g.shop?.id?.includes('epic') ? 'epic' :
+                        g.shop?.id?.includes('gog') ? 'gog' :
+                        g.shop?.id?.includes('humble') ? 'humble' : 'steam',
+              storeName: g.shop?.name || 'Steam',
+              storeID: g.shop?.id || '1',
+              normalPrice: g.deal?.regular?.amount || 0,
+              salePrice: g.deal?.price?.amount || 0,
+              savings: g.deal?.cut || 0,
+              thumb: g.assets?.banner300 || '',
+              url: g.deal?.url || '#',
+              steamRatingPercent: 75,
+              steamRatingCount: 0,
+              isITAD: true
+            }));
         }
       } catch(e) {}
+
+      // CheapShark yedek olarak dene (blok yoksa)
+      let cheapDeals = [];
+      try {
+        const r = await fetch(
+          `${CHEAPSHARK}/deals?pageSize=24&sortBy=Savings&desc=1&lowerDiscount=50`,
+          { headers: { 'User-Agent': 'GameDealApp/1.0' } }
+        );
+        if (r.ok) {
+          const raw = await r.json();
+          cheapDeals = raw
+            .filter(g => !g.error)
+            .map(g => ({
+              title: g.title,
+              platform: g.storeID === '13' ? 'epic' :
+                        g.storeID === '25' ? 'gog' :
+                        g.storeID === '11' ? 'humble' : 'steam',
+              storeName: g.storeID === '13' ? 'Epic' :
+                         g.storeID === '25' ? 'GOG' :
+                         g.storeID === '11' ? 'Humble' : 'Steam',
+              storeID: g.storeID,
+              normalPrice: parseFloat(g.normalPrice),
+              salePrice: parseFloat(g.salePrice),
+              savings: parseFloat(g.savings),
+              thumb: g.thumb || '',
+              url: `https://www.cheapshark.com/redirect?dealID=${g.dealID}`,
+              steamRatingPercent: parseInt(g.steamRatingPercent) || 75,
+              steamRatingCount: parseInt(g.steamRatingCount) || 0,
+              isITAD: false
+            }));
+        }
+      } catch(e) {}
+
+      // İkisini birleştir, savings'e göre sırala
+      const combined = [...itadDeals, ...cheapDeals]
+        .sort((a, b) => parseFloat(b.savings) - parseFloat(a.savings))
+        // Duplicate title temizle
+        .filter((g, i, arr) => arr.findIndex(x => x.title === g.title) === i)
+        .slice(0, 24);
 
       data = {
         cheapshark: cheapDeals,
         itad: itadDeals,
-        total: cheapDeals.length + itadDeals.length
+        combined,
+        total: combined.length
       };
+    }
+
+    // ── TRENDING ───────────────────────────────────
+    else if (type === 'trending') {
+
+      // Aboneliklere yeni gelenler
+      let newInSubs = [];
+      try {
+        const r = await fetch(`${ITAD_BASE}/games/subscriptions/v1/history?key=${ITAD_KEY}&limit=12`);
+        if (r.ok) {
+          const d = await r.json();
+          newInSubs = (d.list || []).map(g => ({
+            title: g.title,
+            service: g.service?.name || g.service || 'Game Pass',
+            platform: g.service?.id?.includes('prime') ? 'prime' : 'xbox',
+            image: g.assets?.banner300 || '',
+            addedAt: g.since || new Date().toISOString()
+          }));
+        }
+      } catch(e) {}
+
+      // En çok beklenenler (Most Waitlisted - son 30 gün)
+      let mostWaitlisted = [];
+      try {
+        const r = await fetch(`${ITAD_BASE}/stats/most-waitlisted/v1?key=${ITAD_KEY}&country=${tr}&limit=10&period=30`);
+        if (r.ok) {
+          const d = await r.json();
+          mostWaitlisted = (d.list || []).map(g => ({
+            title: g.title,
+            platform: 'steam',
+            image: g.assets?.banner300 || '',
+            price: g.deal?.price?.amount || 0,
+            discount: g.deal?.cut || 0,
+            url: g.deal?.url || '#'
+          }));
+        }
+      } catch(e) {}
+
+      // En çok toplananlar (Most Collected - son 30 gün)
+      let mostCollected = [];
+      try {
+        const r = await fetch(`${ITAD_BASE}/stats/most-collected/v1?key=${ITAD_KEY}&country=${tr}&limit=10&period=30`);
+        if (r.ok) {
+          const d = await r.json();
+          mostCollected = (d.list || []).map(g => ({
+            title: g.title,
+            platform: 'steam',
+            image: g.assets?.banner300 || '',
+            price: g.deal?.price?.amount || 0,
+            discount: g.deal?.cut || 0,
+            url: g.deal?.url || '#'
+          }));
+        }
+      } catch(e) {}
+
+      data = { newInSubs, mostWaitlisted, mostCollected };
     }
 
     // ── USD/TRY KUR ────────────────────────────────
