@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)file:///C:/Users/user/Downloads/gamedeal-animated_4.html -->
+<!-- saved from url=(0056)file:///C:/Users/user/Downloads/gamedeal-animated_6.html -->
 <html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GameDeal — Bedava &amp; İndirimli Oyunlar</title>
-<link href="./fıkkkkkkkkkkkkkk_files/css2" rel="stylesheet">
+<link href="./feeeeeeeeeeeeek_files/css2" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -21,8 +21,17 @@ body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overfl
 /* HEADER */
 header{position:sticky;top:0;z-index:100;background:rgba(8,12,20,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .hinner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 24px;gap:16px}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;display:flex;align-items:center;gap:10px;user-select:none}
+/* GLITCH LOGO */
+.logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;display:flex;align-items:center;gap:10px;user-select:none;position:relative;cursor:pointer}
 .logo em{color:var(--accent);font-style:normal}
+.logo-text{position:relative;display:inline-block}
+.logo-text::before,.logo-text::after{content:attr(data-text);position:absolute;top:0;left:0;opacity:0;transition:opacity .1s}
+.logo-text::before{color:#e63946;clip-path:polygon(0 0,100% 0,100% 35%,0 35%)}
+.logo-text::after{color:#4da6ff;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%)}
+.logo:hover .logo-text::before{opacity:1;animation:gl1 .15s infinite}
+.logo:hover .logo-text::after{opacity:1;animation:gl2 .15s infinite}
+@keyframes gl1{0%,100%{transform:translate(-2px,0)}50%{transform:translate(2px,0)}}
+@keyframes gl2{0%,100%{transform:translate(2px,0)}50%{transform:translate(-2px,0)}}
 .ldot{width:10px;height:10px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent),0 0 24px rgba(240,192,64,0.4);animation:breathe 2.5s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.6);opacity:0.5}}
 
@@ -117,6 +126,57 @@ nav button.active{color:var(--accent);background:rgba(240,192,64,0.08)}
 .btn-get:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(240,192,64,.4)}
 .btn-buy{background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-weight:700;font-size:12px;border:1px solid var(--border);padding:8px 15px;border-radius:7px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
 .btn-buy:hover{border-color:var(--accent);color:var(--accent)}
+
+/* 3D CARD MOUSE TRACKING */
+.card{transform-style:preserve-3d;will-change:transform}
+.card-shine{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 50%,rgba(240,192,64,0.03) 100%);opacity:0;transition:opacity .3s;pointer-events:none;z-index:2;border-radius:14px}
+.card:hover .card-shine{opacity:1}
+
+/* 3D PLATFORM FILTER BUTTONS */
+.fbtn{display:flex;align-items:center;gap:7px;padding:6px 14px;border-radius:7px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Syne',sans-serif;transform-style:preserve-3d}
+.fbtn:hover{border-color:var(--accent);color:var(--text);transform:perspective(200px) rotateX(12deg) translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.3)}
+.fbtn.on{background:rgba(240,192,64,.08);border-color:rgba(240,192,64,.3);color:var(--accent)}
+
+/* SEARCH */
+.search-wrap{max-width:1320px;margin:0 auto;padding:0 24px 32px;position:relative;z-index:10}
+.search-bar{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 18px;transition:all .3s}
+.search-bar:focus-within{border-color:rgba(240,192,64,0.4);box-shadow:0 0 24px rgba(240,192,64,0.06)}
+.search-bar input{background:none;border:none;outline:none;color:var(--text);font-size:14px;flex:1;font-family:'Syne',sans-serif}
+.search-bar input::placeholder{color:var(--muted)}
+.search-results{position:absolute;left:24px;right:24px;background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;z-index:50;display:none;max-height:320px;overflow-y:auto}
+.search-results.open{display:block}
+.sr{display:flex;align-items:center;gap:12px;padding:10px 16px;cursor:pointer;transition:background .18s}
+.sr:hover{background:rgba(240,192,64,0.05)}
+.sr-thumb{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.sr-title{font-size:13px;font-weight:700;flex:1}
+.sr-pct{font-size:10px;background:rgba(230,57,70,.12);color:#e63946;padding:2px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace}
+.sr-price{font-size:13px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace}
+
+/* PRICE HISTORY MODAL */
+.ph-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);z-index:300;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s}
+.ph-overlay.open{opacity:1;pointer-events:all}
+.ph-modal{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;max-width:560px;width:100%;transform:translateY(20px) scale(.97);transition:transform .28s}
+.ph-overlay.open .ph-modal{transform:translateY(0) scale(1)}
+.ph-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.ph-title{font-size:16px;font-weight:700}
+.ph-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;transition:color .2s}
+.ph-close:hover{color:var(--text)}
+.ph-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.ph-stat{background:var(--surface);border-radius:10px;padding:12px;text-align:center}
+.ph-stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;font-family:'JetBrains Mono',monospace}
+.ph-stat-n{font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace}
+
+/* TOAST CONTAINER */
+.toast-container{position:fixed;bottom:24px;right:24px;z-index:400;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toast{background:var(--card);border:1px solid rgba(240,192,64,0.35);color:var(--text);padding:13px 16px;border-radius:12px;font-weight:600;transform:translateX(110%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,.5);max-width:300px;pointer-events:all}
+.toast.show{transform:translateX(0)}
+.toast-ico{font-size:20px;flex-shrink:0}
+.toast-body{flex:1}
+.toast-ttl{font-size:12px;font-weight:700}
+.toast-sub{font-size:10px;color:var(--muted);margin-top:2px}
+.toast-pr{text-align:right;flex-shrink:0}
+.toast-old{font-size:10px;color:var(--muted);text-decoration:line-through;font-family:'JetBrains Mono',monospace}
+.toast-new{font-size:14px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace}
 
 /* SKELETON */
 .skel{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;animation:fadeup .4s ease both}
@@ -238,11 +298,11 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 
-<canvas id="particles" width="1528" height="1009"></canvas>
+<canvas id="particles" width="1528" height="1089"></canvas>
 
 <header>
   <div class="hinner">
-    <div class="logo"><div class="ldot"></div>GAME<em>DEAL</em></div>
+    <div class="logo"><div class="ldot"></div><span class="logo-text" data-text="GAMEDEAL">GAME<em>DEAL</em></span></div>
     <nav>
       <button class="active" onclick="goTab(&#39;free&#39;)">Bedava</button>
       <button onclick="goTab(&#39;deals&#39;)">İndirimler</button>
@@ -267,6 +327,15 @@ footer a:hover{text-decoration:underline}
     <div class="hstat"><div class="hstat-n">8</div><div class="hstat-l" id="sl-plat">Platform</div></div>
     <div class="hstat"><div class="hstat-n" id="stat-subs">—<em></em></div><div class="hstat-l" id="sl-subs">Abone</div></div>
   </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Oyun ara... (örn: Elden Ring, Cyberpunk)" oninput="doSearch(this.value)" autocomplete="off">
+    <span id="search-clear" style="cursor:pointer;color:var(--muted);display:none" onclick="clearSearch()">✕</span>
+  </div>
+  <div class="search-results" id="search-results"></div>
 </div>
 
 <!-- FEATURED SLIDER — JS tarafından doldurulacak -->
@@ -324,8 +393,8 @@ footer a:hover{text-decoration:underline}
     </div>
     <div style="display:flex;gap:10px">
       <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-h">38</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saat</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-m">26</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Dakika</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-s">21</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saniye</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-m">08</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Dakika</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-s">10</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saniye</div></div>
     </div>
   </div>
   <div class="sec-head">
@@ -339,47 +408,51 @@ footer a:hover{text-decoration:underline}
       <button class="fbtn" onclick="filterFree(&#39;ubisoft&#39;,this)"><div class="pico" style="background:#0070d1">U</div>Ubisoft</button>
     </div>
   </div>
-  <div class="grid" id="grid-free"><div class="card" data-platform="epic" style="animation-delay:0s">
-    <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d0d2e,#1a2563)"><span style="font-size:44px">🧩</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span><span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Arranger: A Role-Puzzling Adventure&#39;,this)">🤍</div></div>
+  <div class="grid" id="grid-free"><div class="card" data-platform="epic" style="animation-delay:0s" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)">
+    <div class="card-shine"></div>
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d0d2e,#1a2563)"><span style="font-size:44px">🧩</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Arranger: A Role-Puzzling Adventure&#39;,this)">🤍</div></div>
     <div class="cbody">
       <div class="ctitle" title="Arranger: A Role-Puzzling Adventure">Arranger: A Role-Puzzling Adventure</div>
       <div class="cgenre">Bulmaca / Macera</div>
       <div class="crating"><div class="stars">★★★★☆</div><div class="rnum">4.2</div><div class="rcnt">(1.2k yorum)</div></div>
       <div class="cfoot">
-        <div class="pblock"><div class="pold">₺399</div><div class="pcur">ÜCRETSİZ</div><div class="psave">14 Mayıs 2026</div></div>
+        <div class="pblock"><div class="pold">₺399</div><div class="pcur">ÜCRETSİZ</div><div class="psave" style="cursor:pointer" onclick="openPH(&#39;Arranger: A Role-Puzzling Adventure&#39;,0,0,&#39;free&#39;)" title="Fiyat geçmişini gör">📈 14 Mayıs 2026</div></div>
         <a class="btn-get" href="https://store.epicgames.com/tr/p/arranger-a-role-puzzling-adventure" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
-  </div><div class="card" data-platform="epic" style="animation-delay:0.06s">
-    <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d1f0d,#0f3d0f)"><span style="font-size:44px">🗑️</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span><span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Trash Goblin&#39;,this)">🤍</div></div>
+  </div><div class="card" data-platform="epic" style="animation-delay:0.06s" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)">
+    <div class="card-shine"></div>
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d1f0d,#0f3d0f)"><span style="font-size:44px">🗑️</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Trash Goblin&#39;,this)">🤍</div></div>
     <div class="cbody">
       <div class="ctitle" title="Trash Goblin">Trash Goblin</div>
       <div class="cgenre">Cozy / Simulation</div>
       <div class="crating"><div class="stars">★★★★½</div><div class="rnum">4.7</div><div class="rcnt">(3.4k yorum)</div></div>
       <div class="cfoot">
-        <div class="pblock"><div class="pold">₺249</div><div class="pcur">ÜCRETSİZ</div><div class="psave">14 Mayıs 2026</div></div>
+        <div class="pblock"><div class="pold">₺249</div><div class="pcur">ÜCRETSİZ</div><div class="psave" style="cursor:pointer" onclick="openPH(&#39;Trash Goblin&#39;,0,0,&#39;free&#39;)" title="Fiyat geçmişini gör">📈 14 Mayıs 2026</div></div>
         <a class="btn-get" href="https://store.epicgames.com/tr/p/trash-goblin" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
-  </div><div class="card" data-platform="ubisoft" style="animation-delay:0.12s">
-    <div class="cthumb-ph" style="background:linear-gradient(135deg,#001a35,#0070d1)"><span style="font-size:44px">🎯</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span><span class="ctag ctag-ubisoft">UBISOFT</span></div><div class="cwish " onclick="toggleWish(event,&#39;XDefiant&#39;,this)">🤍</div></div>
+  </div><div class="card" data-platform="ubisoft" style="animation-delay:0.12s" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)">
+    <div class="card-shine"></div>
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#001a35,#0070d1)"><span style="font-size:44px">🎯</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-ubisoft">UBISOFT</span></div><div class="cwish " onclick="toggleWish(event,&#39;XDefiant&#39;,this)">🤍</div></div>
     <div class="cbody">
       <div class="ctitle" title="XDefiant">XDefiant</div>
       <div class="cgenre">FPS / Free to Play</div>
       <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div><div class="rcnt">(45k yorum)</div></div>
       <div class="cfoot">
-        <div class="pblock"><div class="pold">₺0</div><div class="pcur">ÜCRETSİZ</div><div class="psave">Kalıcı ücretsiz</div></div>
+        <div class="pblock"><div class="pold">₺0</div><div class="pcur">ÜCRETSİZ</div><div class="psave" style="cursor:pointer" onclick="openPH(&#39;XDefiant&#39;,0,0,&#39;free&#39;)" title="Fiyat geçmişini gör">📈 Kalıcı ücretsiz</div></div>
         <a class="btn-get" href="https://www.ubisoft.com/tr-tr/game/xdefiant" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
-  </div><div class="card" data-platform="ubisoft" style="animation-delay:0.18s">
-    <div class="cthumb-ph" style="background:linear-gradient(135deg,#1a1a00,#d4af00)"><span style="font-size:44px">⚔️</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span><span class="ctag ctag-ubisoft">UBISOFT</span></div><div class="cwish " onclick="toggleWish(event,&#39;Brawlhalla&#39;,this)">🤍</div></div>
+  </div><div class="card" data-platform="ubisoft" style="animation-delay:0.18s" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)">
+    <div class="card-shine"></div>
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#1a1a00,#d4af00)"><span style="font-size:44px">⚔️</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-ubisoft">UBISOFT</span></div><div class="cwish " onclick="toggleWish(event,&#39;Brawlhalla&#39;,this)">🤍</div></div>
     <div class="cbody">
       <div class="ctitle" title="Brawlhalla">Brawlhalla</div>
       <div class="cgenre">Dövüş / Free to Play</div>
       <div class="crating"><div class="stars">★★★★☆</div><div class="rnum">4.1</div><div class="rcnt">(120k yorum)</div></div>
       <div class="cfoot">
-        <div class="pblock"><div class="pold">₺0</div><div class="pcur">ÜCRETSİZ</div><div class="psave">Kalıcı ücretsiz</div></div>
+        <div class="pblock"><div class="pold">₺0</div><div class="pcur">ÜCRETSİZ</div><div class="psave" style="cursor:pointer" onclick="openPH(&#39;Brawlhalla&#39;,0,0,&#39;free&#39;)" title="Fiyat geçmişini gör">📈 Kalıcı ücretsiz</div></div>
         <a class="btn-get" href="https://www.brawlhalla.com/" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
@@ -792,6 +865,37 @@ footer a:hover{text-decoration:underline}
   </div>
 </div>
 
+<!-- PRICE HISTORY MODAL -->
+<div class="ph-overlay" id="ph-overlay" onclick="closePH(event)">
+  <div class="ph-modal">
+    <div class="ph-header">
+      <div class="ph-title" id="ph-title">Fiyat Geçmişi</div>
+      <button class="ph-close" onclick="document.getElementById(&#39;ph-overlay&#39;).classList.remove(&#39;open&#39;)">✕</button>
+    </div>
+    <div class="ph-stats">
+      <div class="ph-stat"><div class="ph-stat-l">Şu An</div><div class="ph-stat-n" id="ph-cur" style="color:var(--accent)">—</div></div>
+      <div class="ph-stat"><div class="ph-stat-l">En Düşük</div><div class="ph-stat-n" id="ph-low" style="color:#5cdb95">—</div></div>
+      <div class="ph-stat"><div class="ph-stat-l">Normal</div><div class="ph-stat-n" id="ph-reg">—</div></div>
+    </div>
+    <div style="height:140px;position:relative">
+      <svg id="ph-svg" style="width:100%;height:140px" viewBox="0 0 500 140" preserveAspectRatio="none"></svg>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--muted);font-family:&#39;JetBrains Mono&#39;,monospace" id="ph-labels"></div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toast-container"><div class="toast show">
+    <div class="toast-ico">⚔️</div>
+    <div class="toast-body">
+      <div class="toast-ttl">Elden Ring</div>
+      <div class="toast-sub">İndirime girdi! -70%</div>
+    </div>
+    <div class="toast-pr">
+      <div class="toast-old">₺1.299</div>
+      <div class="toast-new">₺389</div>
+    </div></div></div>
+
 <div class="toast" id="toast"><span id="toast-txt"></span></div>
 
 <footer>
@@ -968,6 +1072,7 @@ async function loadDeals(){
     document.getElementById('deals-badge').textContent=allDeals.length+' İNDİRİM';
     document.getElementById('stat-deals').innerHTML=allDeals.length+'<em>+</em>';
     renderDeals();
+    initSearchDB();
   }catch(e){
     document.getElementById('deals-badge').textContent='DEMO';
     renderDealsDemo();
@@ -985,7 +1090,8 @@ function renderDeals(){
     const pct=Math.round(parseFloat(g.savings||0));
     const rnum=parseFloat((g.steamRatingPercent/20).toFixed(1))||3.5;
     const link=g.isITAD?g.url:`https://www.cheapshark.com/redirect?dealID=${g.dealID}`;
-    return`<div class="card" data-platform="${store.platform}" style="animation-delay:${i*.05}s">
+    return`<div class="card" data-platform="${store.platform}" style="animation-delay:${i*.05}s" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)">
+      <div class="card-shine"></div>
       <div class="${g.thumb?'cthumb':'cthumb-ph'}" style="${!g.thumb?'background:var(--surface)':''}">
         ${g.thumb?`<img src="${g.thumb}" alt="${esc(g.title)}" loading="lazy" onerror="this.parentNode.classList.add('cthumb-ph');this.remove()">`:'🎮'}
         <div class="ctags"><span class="ctag ctag-pct">-${pct}%</span> <span class="ctag ctag-${store.platform}">${store.name.toUpperCase()}</span></div>
@@ -999,7 +1105,7 @@ function renderDeals(){
           <div class="pblock">
             <div class="pold">${fmtPrice(g.normalPrice)}</div>
             <div class="pcur paid">${fmtPrice(g.salePrice)}</div>
-            <div class="psave">${fmtPrice(parseFloat(g.normalPrice)-parseFloat(g.salePrice))} ${currentLang==='tr'?'tasarruf':'saved'}!</div>
+            <div class="psave" style="cursor:pointer" onclick="openPH('${esc(g.title)}',${g.normalPrice||0},${g.salePrice||0},'deal')" title="Fiyat geçmişini gör">📈 ${fmtPrice(parseFloat(g.normalPrice)-parseFloat(g.salePrice))} ${currentLang==='tr'?'tasarruf':'saved'}!</div>
           </div>
           <a class="btn-buy" href="${link}" target="_blank" rel="noopener">${t('btn_buy')}</a>
         </div>
@@ -1143,17 +1249,18 @@ function cardHTML(g,i,isFree){
   const platLabel=g.platform==='epic'?'EPIC':g.platform==='steam'?'STEAM':g.platform==='xbox'?'GAME PASS':g.platform==='prime'?'PRIME':g.platform==='ubisoft'?'UBISOFT':g.platform==='gog'?'GOG':g.platform==='humble'?'HUMBLE':g.platform.toUpperCase();
 
   const imgBlock=hasImg
-    ?`<div class="cthumb"><img src="${src}" alt="${esc(g.title)}" loading="lazy" onerror="this.parentNode.innerHTML='<div style=\\'font-size:44px;display:flex;align-items:center;justify-content:center;height:100%\\'>${g.emoji||'🎮'}</div>';this.parentNode.className='cthumb-ph';"><div class="ctags"><span class="ctag ctag-free">${t('free_label')}</span><span class="ctag ctag-${g.platform}">${platLabel}</span></div><div class="cwish ${wl?'on':''}" onclick="toggleWish(event,'${esc(g.title)}',this)">${wl?'❤️':'🤍'}</div></div>`
-    :`<div class="cthumb-ph" style="background:${g.bg||'var(--surface)'}"><span style="font-size:44px">${g.emoji||'🎮'}</span><div class="ctags"><span class="ctag ctag-free">${t('free_label')}</span><span class="ctag ctag-${g.platform}">${platLabel}</span></div><div class="cwish ${wl?'on':''}" onclick="toggleWish(event,'${esc(g.title)}',this)">${wl?'❤️':'🤍'}</div></div>`;
+    ?`<div class="cthumb"><img src="${src}" alt="${esc(g.title)}" loading="lazy" onerror="this.parentNode.innerHTML='<div style=\\'font-size:44px;display:flex;align-items:center;justify-content:center;height:100%\\'>${g.emoji||'🎮'}</div>';this.parentNode.className='cthumb-ph';"><div class="ctags"><span class="ctag ctag-free">${t('free_label')}</span> <span class="ctag ctag-${g.platform}">${platLabel}</span></div><div class="cwish ${wl?'on':''}" onclick="toggleWish(event,'${esc(g.title)}',this)">${wl?'❤️':'🤍'}</div></div>`
+    :`<div class="cthumb-ph" style="background:${g.bg||'var(--surface)'}"><span style="font-size:44px">${g.emoji||'🎮'}</span><div class="ctags"><span class="ctag ctag-free">${t('free_label')}</span> <span class="ctag ctag-${g.platform}">${platLabel}</span></div><div class="cwish ${wl?'on':''}" onclick="toggleWish(event,'${esc(g.title)}',this)">${wl?'❤️':'🤍'}</div></div>`;
 
-  return`<div class="card" data-platform="${g.platform}" style="animation-delay:${i*.06}s">
+  return`<div class="card" data-platform="${g.platform}" style="animation-delay:${i*.06}s" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)">
+    <div class="card-shine"></div>
     ${imgBlock}
     <div class="cbody">
       <div class="ctitle" title="${esc(g.title)}">${esc(g.title)}</div>
       <div class="cgenre">${g.genre||g.platform}</div>
       <div class="crating"><div class="stars">${stars(g.rating||4)}</div><div class="rnum">${g.rating||4}</div><div class="rcnt">(${g.reviews||'—'} yorum)</div></div>
       <div class="cfoot">
-        <div class="pblock"><div class="pold">${g.origTR||g.originalPrice||'—'}</div><div class="pcur">${t('free_label')}</div><div class="psave">${g.expires||'—'}</div></div>
+        <div class="pblock"><div class="pold">${g.origTR||g.originalPrice||'—'}</div><div class="pcur">${t('free_label')}</div><div class="psave" style="cursor:pointer" onclick="openPH('${esc(g.title)}',0,0,'free')" title="Fiyat geçmişini gör">📈 ${g.expires||'—'}</div></div>
         <a class="btn-get" href="${g.url||'#'}" target="_blank" rel="noopener">${t('btn_get')}</a>
       </div>
     </div>
@@ -1175,7 +1282,207 @@ function buildCompare(){
   document.getElementById('compare-rows').innerHTML=rows.map(r=>`<div class="ctr row"><div class="gname">${esc(r.name)}</div>${[r.steam,r.epic,r.xbox,r.ps,r.gog].map(p=>`<div><span class="ptag ${p.includes('🏆')?'best':(p.includes('PASS')||p.includes('PLUS'))?'sub':p==='—'?'na':''}">${p}</span></div>`).join('')}</div>`).join('');
 }
 
-// ── WISHLIST ─────────────────────────────────────
+// ── 3D CARD TILT ─────────────────────────────────
+function tilt3d(e, card) {
+  const r = card.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - 0.5;
+  const y = (e.clientY - r.top) / r.height - 0.5;
+  card.style.transform = `perspective(700px) rotateY(${x*18}deg) rotateX(${-y*14}deg) translateZ(16px) scale(1.02)`;
+  card.style.boxShadow = `${x*20}px ${y*20}px 50px rgba(0,0,0,0.5), 0 0 30px rgba(240,192,64,0.08)`;
+  card.style.borderColor = 'rgba(240,192,64,0.35)';
+}
+function untilt(card) {
+  card.style.transform = '';
+  card.style.boxShadow = '';
+  card.style.borderColor = '';
+}
+
+// ── SEARCH ───────────────────────────────────────
+let searchDB = [];
+function initSearchDB() {
+  searchDB = [
+    ...allFree.map(g => ({...g, type:'free'})),
+    ...allDeals.map(g => ({...g, type:'deal'}))
+  ];
+}
+
+function doSearch(q) {
+  const el = document.getElementById('search-results');
+  const clr = document.getElementById('search-clear');
+  if (!q || q.length < 2) {
+    el.classList.remove('open');
+    clr.style.display = 'none';
+    return;
+  }
+  clr.style.display = 'block';
+  const db = searchDB.length ? searchDB : [
+    {title:'Elden Ring', type:'deal', salePrice:10.2, normalPrice:39.99, savings:75, platform:'steam', emoji:'⚔️', bg:'#1a1505'},
+    {title:'Cyberpunk 2077', type:'deal', salePrice:5.1, normalPrice:59.99, savings:80, platform:'steam', emoji:'🏙️', bg:'#1a0d0d'},
+    {title:'The Witcher 3', type:'deal', salePrice:6.6, normalPrice:39.99, savings:70, platform:'gog', emoji:'🧙', bg:'#150d2a'},
+    {title:'Arranger', type:'free', platform:'epic', emoji:'🧩', bg:'#0d0d2e'},
+    {title:'Trash Goblin', type:'free', platform:'epic', emoji:'🗑️', bg:'#0d1f0d'},
+    {title:'Subnautica 2', type:'free', platform:'xbox', emoji:'🌊', bg:'#001a35'},
+  ];
+  const res = db.filter(g => g.title?.toLowerCase().includes(q.toLowerCase())).slice(0, 6);
+  if (!res.length) {
+    el.classList.add('open');
+    el.innerHTML = `<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">🔍 "${esc(q)}" için sonuç bulunamadı</div>`;
+    return;
+  }
+  el.classList.add('open');
+  el.innerHTML = res.map(g => {
+    const src = g.image || g.thumb || '';
+    const thumb = src
+      ? `<div class="sr-thumb" style="overflow:hidden"><img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:7px" onerror="this.parentNode.textContent='${g.emoji||'🎮'}'"></div>`
+      : `<div class="sr-thumb" style="background:${g.bg||'var(--surface)'}">${g.emoji||'🎮'}</div>`;
+    const price = g.type==='free'
+      ? `<span class="sr-price">ÜCRETSİZ</span>`
+      : `<span class="sr-pct">-${Math.round(g.savings||0)}%</span><span class="sr-price">${fmtPrice(g.salePrice)}</span>`;
+    return `<div class="sr" onclick="searchSelect('${esc(g.title)}',${g.normalPrice||0},${g.salePrice||0},'${g.type}')">
+      ${thumb}
+      <span class="sr-title">${esc(g.title)}</span>
+      ${price}
+    </div>`;
+  }).join('');
+}
+
+function searchSelect(title, normal, sale, type) {
+  document.getElementById('search-input').value = title;
+  document.getElementById('search-results').classList.remove('open');
+  openPH(title, normal, sale, type);
+}
+
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').classList.remove('open');
+  document.getElementById('search-clear').style.display = 'none';
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-wrap'))
+    document.getElementById('search-results').classList.remove('open');
+});
+
+// ── PRICE HISTORY ────────────────────────────────
+async function openPH(title, normal, sale, type) {
+  document.getElementById('ph-overlay').classList.add('open');
+  document.getElementById('ph-title').textContent = title + ' — Fiyat Geçmişi';
+  document.getElementById('ph-cur').textContent = type==='free' ? 'ÜCRETSİZ' : fmtPrice(sale);
+  document.getElementById('ph-low').textContent = type==='free' ? 'ÜCRETSİZ' : fmtPrice(sale);
+  document.getElementById('ph-reg').textContent = normal ? fmtPrice(normal) : '—';
+
+  // ITAD'dan fiyat geçmişi çek
+  let history = [];
+  try {
+    const r = await fetch(`${API}?type=pricehistory&title=${encodeURIComponent(title)}`);
+    if (r.ok) {
+      const d = await r.json();
+      history = d.history || [];
+    }
+  } catch(e) {}
+
+  // Fallback: simüle edilmiş geçmiş
+  if (!history.length) {
+    const base = normal || 40;
+    const months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+    const now = new Date();
+    history = Array.from({length:12}, (_,i) => {
+      const d = new Date(now); d.setMonth(d.getMonth()-11+i);
+      const discount = [0,0,0.2,0,0.5,0,0.3,0,0.7,0,0.2,type==='free'?1:0.8][i];
+      return { month: months[d.getMonth()], price: parseFloat((base*(1-discount)).toFixed(2)), discount: Math.round(discount*100) };
+    });
+  }
+
+  drawPHChart(history, normal, type);
+}
+
+function drawPHChart(history, normal, type) {
+  const svg = document.getElementById('ph-svg');
+  const labels = document.getElementById('ph-labels');
+  const W=500, H=140, pad=16;
+  const prices = history.map(h => h.price);
+  const min = 0, max = Math.max(...prices, normal||0) * 1.1;
+  const x = i => pad + (i/(history.length-1))*(W-pad*2);
+  const y = v => H-pad-(v-min)/(max-min)*(H-pad*2);
+  const path = prices.map((v,i) => `${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const area = path + ` L${x(history.length-1)},${H} L${x(0)},${H} Z`;
+
+  // Normal fiyat çizgisi
+  const ny = y(normal||max*.9);
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="phg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f0c040" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="#f0c040" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    ${normal ? `<line x1="${pad}" y1="${ny}" x2="${W-pad}" y2="${ny}" stroke="rgba(240,192,64,0.2)" stroke-width="1" stroke-dasharray="4,4"/>` : ''}
+    <path d="${area}" fill="url(#phg)"/>
+    <path d="${path}" fill="none" stroke="#f0c040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    ${prices.map((v,i) => {
+      const isLow = v === Math.min(...prices);
+      const isCur = i === prices.length-1;
+      return `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="${isLow||isCur?5:3}" fill="${isLow?'#5cdb95':isCur?'#f0c040':'#f0c040'}" stroke="#111828" stroke-width="2"/>`;
+    }).join('')}
+    ${normal ? `<text x="${W-pad}" y="${ny-6}" text-anchor="end" font-size="9" fill="rgba(240,192,64,0.5)" font-family="monospace">Normal: ${fmtPrice(normal)}</text>` : ''}
+  `;
+
+  // En düşük güncelle
+  const low = Math.min(...prices);
+  document.getElementById('ph-low').textContent = low === 0 ? 'ÜCRETSİZ' : fmtPrice(low);
+
+  labels.innerHTML = history.map(h => `<span>${h.month}</span>`).join('');
+}
+
+function closePH(e) {
+  if (e.target === document.getElementById('ph-overlay'))
+    document.getElementById('ph-overlay').classList.remove('open');
+}
+
+// ── LIVE TOASTS ──────────────────────────────────
+const liveDeals = [
+  {title:'Elden Ring', old:'₺1.299', price:'₺389', pct:'-70%', emoji:'⚔️'},
+  {title:'Cyberpunk 2077', old:'₺999', price:'₺199', pct:'-80%', emoji:'🏙️'},
+  {title:'Subnautica 2', old:'₺549', price:'BEDAVA', pct:'GAME PASS', emoji:'🌊'},
+  {title:'Baldur\'s Gate 3', old:'₺1.299', price:'₺519', pct:'-60%', emoji:'🎭'},
+  {title:'Red Dead Redemption 2', old:'₺1.199', price:'₺299', pct:'-75%', emoji:'🌵'},
+];
+
+function showLiveToast(deal) {
+  const container = document.getElementById('toast-container');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.innerHTML = `
+    <div class="toast-ico">${deal.emoji}</div>
+    <div class="toast-body">
+      <div class="toast-ttl">${deal.title}</div>
+      <div class="toast-sub">İndirime girdi! ${deal.pct}</div>
+    </div>
+    <div class="toast-pr">
+      <div class="toast-old">${deal.old}</div>
+      <div class="toast-new">${deal.price}</div>
+    </div>`;
+  container.appendChild(el);
+  requestAnimationFrame(() => { requestAnimationFrame(() => el.classList.add('show')); });
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 400);
+  }, 4000);
+}
+
+// İlk 8 saniye sonra başlat, sonra rastgele aralıklarla göster
+setTimeout(() => {
+  let idx = 0;
+  function nextToast() {
+    showLiveToast(liveDeals[idx % liveDeals.length]);
+    idx++;
+    setTimeout(nextToast, 8000 + Math.random() * 6000);
+  }
+  nextToast();
+}, 8000);
+
+// ── PRICE HISTORY API ──────────────────────────────
 function toggleWish(e,title,btn){
   e.stopPropagation();
   const idx=wishlist.indexOf(title);
