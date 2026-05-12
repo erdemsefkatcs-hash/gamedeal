@@ -216,11 +216,11 @@ export default async function handler(req, res) {
         }
       } catch(e) {}
 
-      // CheapShark — sortBy Savings ile en yüksek indirimli oyunlar
+      // CheapShark — onSale=1 ile sadece gerçekten indirimde olan oyunlar
       let cheapDeals = [];
       try {
         const r = await fetch(
-          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&steamRating=70`,
+          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&onSale=1&steamRating=70`,
           { headers: { 'User-Agent': 'GameDealApp/1.0' } }
         );
         if (r.ok) {
