@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0054)file:///C:/Users/user/Downloads/gamedeals-final_3.html -->
+<html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameDeal — Bedava & İndirimli Oyunlar</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>GameDeal — Bedava &amp; İndirimli Oyunlar</title>
+<link href="./sonson_files/css2" rel="stylesheet">
 <style>
 :root {
   --bg: #080810;
@@ -476,15 +476,15 @@ footer a:hover{text-decoration:underline}
       GAME<em>DEAL</em>
     </div>
     <nav>
-      <button class="active" onclick="goTab('free')">Bedava</button>
-      <button onclick="goTab('deals')">İndirimler</button>
-      <button onclick="goTab('compare')">Karşılaştır</button>
-      <button onclick="goTab('wishlist')">İstek Listesi</button>
+      <button class="active" onclick="goTab(&#39;free&#39;)">Bedava</button>
+      <button onclick="goTab(&#39;deals&#39;)">İndirimler</button>
+      <button onclick="goTab(&#39;compare&#39;)">Karşılaştır</button>
+      <button onclick="goTab(&#39;wishlist&#39;)">İstek Listesi</button>
     </nav>
     <div class="hright">
-      <div class="api-pill" id="api-pill">
+      <div class="api-pill err" id="api-pill">
         <div class="adot"></div>
-        <span id="api-lbl">Bağlanıyor...</span>
+        <span id="api-lbl">API hatası</span>
       </div>
       <button class="lang-btn" id="lang-btn" onclick="toggleLang()">🇹🇷 TR</button>
       <button class="btn-sub" id="btn-notify" onclick="openModal()">🔔 Bildirim Al</button>
@@ -496,12 +496,12 @@ footer a:hover{text-decoration:underline}
 <div class="hero">
   <div class="hero-eyebrow">
     <div class="live"></div>
-    <span id="today-str">Yükleniyor...</span>
+    <span id="today-str">13 MAYIS 2026 ÇARŞAMBA</span>
   </div>
   <h1>OYUN AL,<br><span class="hl">PARA ÖDEME.</span></h1>
-  <p class="hero-sub">Steam, Epic, Xbox, PlayStation ve GOG'daki tüm bedava ve indirimli oyunları tek yerden takip et. İndirime girince haber al.</p>
+  <p class="hero-sub">Steam, Epic, Xbox, PlayStation ve GOG'daki tüm bedava ve indirimli oyunları tek yerden takip et.</p>
   <div class="hero-stats">
-    <div class="hstat"><div class="hstat-n" id="stat-free">—<em></em></div><div class="hstat-l">Bu Hafta Bedava</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-free">4<em>+</em></div><div class="hstat-l">Bu Hafta Bedava</div></div>
     <div class="hstat"><div class="hstat-n" id="stat-deals">—<em></em></div><div class="hstat-l">Aktif İndirim</div></div>
     <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">Platform</div></div>
     <div class="hstat"><div class="hstat-n" id="stat-subs">—<em></em></div><div class="hstat-l">Abone</div></div>
@@ -515,44 +515,312 @@ footer a:hover{text-decoration:underline}
   <div class="cdbox">
     <div class="cd-info">
       <div class="cd-eyebrow">Epic Games Store — Sonraki Değişim</div>
-      <div class="cd-title" id="cd-title">14 MAYIS'TA 2 GİZLİ OYUN! 🎁</div>
+      <div class="cd-title" id="cd-title">🎁 14 MAYIS PERŞEMBE — YENİ BEDAVA OYUNLAR!</div>
     </div>
     <div class="cd-nums">
-      <div class="cdblock"><div class="cdnum" id="cd-h">00</div><div class="cdlabel">Saat</div></div>
-      <div class="cdblock"><div class="cdnum" id="cd-m">00</div><div class="cdlabel">Dakika</div></div>
-      <div class="cdblock"><div class="cdnum" id="cd-s">00</div><div class="cdlabel">Saniye</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-h">39</div><div class="cdlabel">Saat</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-m">20</div><div class="cdlabel">Dakika</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-s">23</div><div class="cdlabel">Saniye</div></div>
     </div>
   </div>
 
   <div class="sec-head">
-    <div class="sec-title">Bu Hafta Bedava <span class="badge badge-free" id="free-badge">YÜKLENİYOR</span></div>
+    <div class="sec-title">Bu Hafta Bedava <span class="badge badge-free" id="free-badge">4 OYUN</span></div>
     <div class="filters">
-      <button class="fbtn on" onclick="filterFree('all',this)">Tümü</button>
-      <button class="fbtn" onclick="filterFree('epic',this)"><div class="pico" style="background:#2563eb">E</div>Epic</button>
-      <button class="fbtn" onclick="filterFree('steam',this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
-      <button class="fbtn" onclick="filterFree('xbox',this)"><div class="pico" style="background:#107c10">X</div>Game Pass</button>
-      <button class="fbtn" onclick="filterFree('prime',this)"><div class="pico" style="background:#00a8e0">P</div>Prime</button>
-      <button class="fbtn" onclick="filterFree('ubisoft',this)"><div class="pico" style="background:#0070d1">U</div>Ubisoft</button>
+      <button class="fbtn on" onclick="filterFree(&#39;all&#39;,this)">Tümü</button>
+      <button class="fbtn" onclick="filterFree(&#39;epic&#39;,this)"><div class="pico" style="background:#2563eb">E</div>Epic</button>
+      <button class="fbtn" onclick="filterFree(&#39;steam&#39;,this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
+      <button class="fbtn" onclick="filterFree(&#39;xbox&#39;,this)"><div class="pico" style="background:#107c10">X</div>Game Pass</button>
+      <button class="fbtn" onclick="filterFree(&#39;prime&#39;,this)"><div class="pico" style="background:#00a8e0">P</div>Prime</button>
+      <button class="fbtn" onclick="filterFree(&#39;ubisoft&#39;,this)"><div class="pico" style="background:#0070d1">U</div>Ubisoft</button>
     </div>
   </div>
-  <div class="grid" id="grid-free"></div>
+  <div class="grid" id="grid-free">
+  <div class="card" data-platform="epic" style="animation-delay:0s">
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d0d2e,#1a2563)">
+         🧩
+         <div class="ctags">
+           <span class="ctag ctag-free">BEDAVA</span>
+           <span class="ctag ctag-epic">EPIC GAMES</span>
+         </div>
+         <div class="cwish " onclick="toggleWish(event,&#39;Arranger: A Role-Puzzling Adventure&#39;,this)">🤍</div>
+       </div>
+    <div class="cbody">
+      <div class="ctitle" title="Arranger: A Role-Puzzling Adventure">Arranger: A Role-Puzzling Adventure</div>
+      <div class="cgenre">Bulmaca / Macera</div>
+      <div class="crating">
+        <div class="stars">★★★★☆</div>
+        <div class="rnum">4.2</div>
+        <div class="rcnt">(1.2k yorum)</div>
+      </div>
+      <div class="cfoot">
+        <div class="pblock"><div class="pold">₺399</div>
+       <div class="pcur">ÜCRETSİZ</div>
+       <div class="psave">14 Mayıs 2026</div></div>
+        <a class="btn-get" href="https://store.epicgames.com/tr/p/arranger-a-role-puzzling-adventure" target="_blank" rel="noopener">Hemen Al →</a>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-platform="epic" style="animation-delay:0.06s">
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d1f0d,#0f3d0f)">
+         🗑️
+         <div class="ctags">
+           <span class="ctag ctag-free">BEDAVA</span>
+           <span class="ctag ctag-epic">EPIC GAMES</span>
+         </div>
+         <div class="cwish " onclick="toggleWish(event,&#39;Trash Goblin&#39;,this)">🤍</div>
+       </div>
+    <div class="cbody">
+      <div class="ctitle" title="Trash Goblin">Trash Goblin</div>
+      <div class="cgenre">Cozy / Simulation</div>
+      <div class="crating">
+        <div class="stars">★★★★½</div>
+        <div class="rnum">4.7</div>
+        <div class="rcnt">(3.4k yorum)</div>
+      </div>
+      <div class="cfoot">
+        <div class="pblock"><div class="pold">₺249</div>
+       <div class="pcur">ÜCRETSİZ</div>
+       <div class="psave">14 Mayıs 2026</div></div>
+        <a class="btn-get" href="https://store.epicgames.com/tr/p/trash-goblin" target="_blank" rel="noopener">Hemen Al →</a>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-platform="ubisoft" style="animation-delay:0.12s">
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#001a35,#0070d133)">
+         🎯
+         <div class="ctags">
+           <span class="ctag ctag-free">BEDAVA</span>
+           <span class="ctag ctag-ubisoft">UBISOFT</span>
+         </div>
+         <div class="cwish " onclick="toggleWish(event,&#39;XDefiant&#39;,this)">🤍</div>
+       </div>
+    <div class="cbody">
+      <div class="ctitle" title="XDefiant">XDefiant</div>
+      <div class="cgenre">FPS / Free to Play</div>
+      <div class="crating">
+        <div class="stars">★★★½☆</div>
+        <div class="rnum">3.8</div>
+        <div class="rcnt">(45k yorum)</div>
+      </div>
+      <div class="cfoot">
+        <div class="pblock"><div class="pold">₺0</div>
+       <div class="pcur">ÜCRETSİZ</div>
+       <div class="psave">Kalıcı ücretsiz</div></div>
+        <a class="btn-get" href="https://www.ubisoft.com/tr-tr/game/xdefiant" target="_blank" rel="noopener">Hemen Al →</a>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-platform="ubisoft" style="animation-delay:0.18s">
+    <div class="cthumb-ph" style="background:linear-gradient(135deg,#1a1a00,#d4af0033)">
+         ⚔️
+         <div class="ctags">
+           <span class="ctag ctag-free">BEDAVA</span>
+           <span class="ctag ctag-ubisoft">UBISOFT</span>
+         </div>
+         <div class="cwish " onclick="toggleWish(event,&#39;Brawlhalla&#39;,this)">🤍</div>
+       </div>
+    <div class="cbody">
+      <div class="ctitle" title="Brawlhalla">Brawlhalla</div>
+      <div class="cgenre">Dövüş / Free to Play</div>
+      <div class="crating">
+        <div class="stars">★★★★☆</div>
+        <div class="rnum">4.1</div>
+        <div class="rcnt">(120k yorum)</div>
+      </div>
+      <div class="cfoot">
+        <div class="pblock"><div class="pold">₺0</div>
+       <div class="pcur">ÜCRETSİZ</div>
+       <div class="psave">Kalıcı ücretsiz</div></div>
+        <a class="btn-get" href="https://www.brawlhalla.com/" target="_blank" rel="noopener">Hemen Al →</a>
+      </div>
+    </div>
+  </div></div>
 </div>
 
 <!-- ══ DEALS TAB ═════════════════════════════════ -->
 <div class="section" id="tab-deals" style="display:none">
   <div class="sec-head">
-    <div class="sec-title">En İyi İndirimler <span class="badge badge-hot" id="deals-badge">YÜKLENİYOR</span></div>
+    <div class="sec-title">En İyi İndirimler <span class="badge badge-hot" id="deals-badge">DEMO</span></div>
     <div class="filters">
-      <button class="fbtn on" onclick="filterDeals('all',this)">Tümü</button>
-      <button class="fbtn" onclick="filterDeals('steam',this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
-      <button class="fbtn" onclick="filterDeals('epic',this)"><div class="pico" style="background:#2563eb">E</div>Epic</button>
-      <button class="fbtn" onclick="filterDeals('gog',this)"><div class="pico" style="background:#6b00b3">G</div>GOG</button>
-      <button class="fbtn" onclick="filterDeals('humble',this)"><div class="pico" style="background:#cc2222">H</div>Humble</button>
-      <button class="fbtn" onclick="filterDeals('xbox',this)"><div class="pico" style="background:#107c10">X</div>Xbox</button>
-      <button class="fbtn" onclick="filterDeals('ubisoft',this)"><div class="pico" style="background:#0070d1">U</div>Ubisoft</button>
+      <button class="fbtn on" onclick="filterDeals(&#39;all&#39;,this)">Tümü</button>
+      <button class="fbtn" onclick="filterDeals(&#39;steam&#39;,this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
+      <button class="fbtn" onclick="filterDeals(&#39;epic&#39;,this)"><div class="pico" style="background:#2563eb">E</div>Epic</button>
+      <button class="fbtn" onclick="filterDeals(&#39;gog&#39;,this)"><div class="pico" style="background:#6b00b3">G</div>GOG</button>
+      <button class="fbtn" onclick="filterDeals(&#39;humble&#39;,this)"><div class="pico" style="background:#cc2222">H</div>Humble</button>
+      <button class="fbtn" onclick="filterDeals(&#39;xbox&#39;,this)"><div class="pico" style="background:#107c10">X</div>Xbox</button>
+      <button class="fbtn" onclick="filterDeals(&#39;ubisoft&#39;,this)"><div class="pico" style="background:#0070d1">U</div>Ubisoft</button>
     </div>
   </div>
-  <div class="grid" id="grid-deals"></div>
+  <div class="grid" id="grid-deals">
+    <div class="card" data-platform="steam" style="animation-delay:0s">
+      <div class="cthumb-ph" style="background:linear-gradient(135deg,#1a0d0d,#3a1515)">
+        🏙️
+        <div class="ctags">
+          <span class="ctag ctag-pct">-80%</span>
+          <span class="ctag ctag-steam">STEAM</span>
+        </div>
+        <div class="cwish " onclick="toggleWish(event,&#39;Cyberpunk 2077&#39;,this)">
+          🤍
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">Cyberpunk 2077</div>
+        <div class="cgenre">RPG / Aksiyon</div>
+        <div class="crating">
+          <div class="stars">★★★★½</div>
+          <div class="rnum">4.8</div>
+          <div class="rcnt">(200k yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">₺999</div>
+            <div class="pcur paid">₺199</div>
+          </div>
+          <a class="btn-buy" href="https://store.steampowered.com/app/1091500" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-platform="epic" style="animation-delay:0.07s">
+      <div class="cthumb-ph" style="background:linear-gradient(135deg,#0d0d1a,#1a1a3a)">
+        🌵
+        <div class="ctags">
+          <span class="ctag ctag-pct">-75%</span>
+          <span class="ctag ctag-epic">EPIC</span>
+        </div>
+        <div class="cwish " onclick="toggleWish(event,&#39;Red Dead Redemption 2&#39;,this)">
+          🤍
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">Red Dead Redemption 2</div>
+        <div class="cgenre">Aksiyon / Açık Dünya</div>
+        <div class="crating">
+          <div class="stars">★★★★½</div>
+          <div class="rnum">4.9</div>
+          <div class="rcnt">(150k yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">₺1199</div>
+            <div class="pcur paid">₺299</div>
+          </div>
+          <a class="btn-buy" href="https://store.epicgames.com/" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-platform="gog" style="animation-delay:0.14s">
+      <div class="cthumb-ph" style="background:linear-gradient(135deg,#150d2a,#2a1545)">
+        🧙
+        <div class="ctags">
+          <span class="ctag ctag-pct">-70%</span>
+          <span class="ctag ctag-gog">GOG</span>
+        </div>
+        <div class="cwish " onclick="toggleWish(event,&#39;The Witcher 3: Wild Hunt&#39;,this)">
+          🤍
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">The Witcher 3: Wild Hunt</div>
+        <div class="cgenre">RPG / Fantasy</div>
+        <div class="crating">
+          <div class="stars">★★★★★</div>
+          <div class="rnum">5</div>
+          <div class="rcnt">(300k yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">₺849</div>
+            <div class="pcur paid">₺254</div>
+          </div>
+          <a class="btn-buy" href="https://gog.com/" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-platform="steam" style="animation-delay:0.21000000000000002s">
+      <div class="cthumb-ph" style="background:linear-gradient(135deg,#1a1505,#3a2a00)">
+        ⚔️
+        <div class="ctags">
+          <span class="ctag ctag-pct">-70%</span>
+          <span class="ctag ctag-steam">STEAM</span>
+        </div>
+        <div class="cwish " onclick="toggleWish(event,&#39;Elden Ring&#39;,this)">
+          🤍
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">Elden Ring</div>
+        <div class="cgenre">Action RPG</div>
+        <div class="crating">
+          <div class="stars">★★★★½</div>
+          <div class="rnum">4.9</div>
+          <div class="rcnt">(420k yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">₺1299</div>
+            <div class="pcur paid">₺389</div>
+          </div>
+          <a class="btn-buy" href="https://store.steampowered.com/app/1245620" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-platform="ubisoft" style="animation-delay:0.28s">
+      <div class="cthumb-ph" style="background:linear-gradient(135deg,#001a35,#0070d133)">
+        🪓
+        <div class="ctags">
+          <span class="ctag ctag-pct">-75%</span>
+          <span class="ctag ctag-ubisoft">UBISOFT</span>
+        </div>
+        <div class="cwish " onclick="toggleWish(event,&#39;Assassin&#39;s Creed Valhalla&#39;,this)">
+          🤍
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">Assassin's Creed Valhalla</div>
+        <div class="cgenre">Aksiyon / RPG</div>
+        <div class="crating">
+          <div class="stars">★★★★☆</div>
+          <div class="rnum">4.3</div>
+          <div class="rcnt">(80k yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">₺799</div>
+            <div class="pcur paid">₺199</div>
+          </div>
+          <a class="btn-buy" href="https://www.ubisoft.com/" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-platform="xbox" style="animation-delay:0.35000000000000003s">
+      <div class="cthumb-ph" style="background:linear-gradient(135deg,#0a1a0a,#107c1033)">
+        🪖
+        <div class="ctags">
+          <span class="ctag ctag-free">PASS</span>
+          <span class="ctag ctag-xbox">XBOX</span>
+        </div>
+        <div class="cwish " onclick="toggleWish(event,&#39;Halo Infinite&#39;,this)">
+          🤍
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">Halo Infinite</div>
+        <div class="cgenre">FPS / Game Pass</div>
+        <div class="crating">
+          <div class="stars">★★★★☆</div>
+          <div class="rnum">4.2</div>
+          <div class="rcnt">(95k yorum)</div>
+        </div>
+        <div class="cfoot">
+          <div class="pblock">
+            <div class="pold">₺599</div>
+            <div class="pcur ">BEDAVA</div>
+          </div>
+          <a class="btn-buy" href="https://www.xbox.com/tr-TR/games/halo-infinite" target="_blank" rel="noopener">Satın Al</a>
+        </div>
+      </div>
+    </div></div>
 </div>
 
 <!-- ══ COMPARE TAB ═══════════════════════════════ -->
@@ -564,7 +832,43 @@ footer a:hover{text-decoration:underline}
     <div class="ctr head">
       <div>Oyun</div><div>Steam</div><div>Epic</div><div>Xbox</div><div>PS</div><div>GOG</div>
     </div>
-    <div id="compare-rows"></div>
+    <div id="compare-rows">
+    <div class="ctr row">
+      <div class="gname">Cyberpunk 2077</div>
+      <div><span class="ptag best">₺199 🏆</span></div><div><span class="ptag">₺249</span></div><div><span class="ptag sub">GAME PASS</span></div><div><span class="ptag">₺279</span></div><div><span class="ptag na">—</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">Red Dead Redemption 2</div>
+      <div><span class="ptag">₺349</span></div><div><span class="ptag best">₺299 🏆</span></div><div><span class="ptag na">—</span></div><div><span class="ptag">₺389</span></div><div><span class="ptag na">—</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">The Witcher 3: Wild Hunt</div>
+      <div><span class="ptag">₺289</span></div><div><span class="ptag na">—</span></div><div><span class="ptag na">—</span></div><div><span class="ptag na">—</span></div><div><span class="ptag best">₺254 🏆</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">Hades II</div>
+      <div><span class="ptag">₺549</span></div><div><span class="ptag na">—</span></div><div><span class="ptag sub">GAME PASS</span></div><div><span class="ptag na">—</span></div><div><span class="ptag na">—</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">Ghostrunner 2</div>
+      <div><span class="ptag best">₺349 🏆</span></div><div><span class="ptag">₺399</span></div><div><span class="ptag na">—</span></div><div><span class="ptag sub">PS PLUS</span></div><div><span class="ptag na">—</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">Baldur's Gate 3</div>
+      <div><span class="ptag best">₺899 🏆</span></div><div><span class="ptag na">—</span></div><div><span class="ptag na">—</span></div><div><span class="ptag">₺999</span></div><div><span class="ptag">₺949</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">Elden Ring</div>
+      <div><span class="ptag best">₺399 🏆</span></div><div><span class="ptag na">—</span></div><div><span class="ptag na">—</span></div><div><span class="ptag">₺449</span></div><div><span class="ptag na">—</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">AC Valhalla</div>
+      <div><span class="ptag">₺299</span></div><div><span class="ptag na">—</span></div><div><span class="ptag sub">GAME PASS</span></div><div><span class="ptag">₺349</span></div><div><span class="ptag na">—</span></div>
+    </div>
+    <div class="ctr row">
+      <div class="gname">Halo Infinite</div>
+      <div><span class="ptag best">₺199 🏆</span></div><div><span class="ptag na">—</span></div><div><span class="ptag sub">GAME PASS</span></div><div><span class="ptag na">—</span></div><div><span class="ptag na">—</span></div>
+    </div></div>
   </div>
 </div>
 
@@ -573,7 +877,11 @@ footer a:hover{text-decoration:underline}
   <div class="sec-head">
     <div class="sec-title">İstek Listem <span class="badge badge-free" id="wish-badge">0 OYUN</span></div>
   </div>
-  <div class="grid" id="grid-wish"></div>
+  <div class="grid" id="grid-wish"><div class="empty">
+      <div class="icon">🎮</div>
+      <h3>Henüz oyun eklemedin</h3>
+      <p>Oyun kartlarındaki 🤍 butonuna tıklayarak<br>istek listene ekleyebilirsin</p>
+    </div></div>
 </div>
 
 <!-- ══ MODAL ════════════════════════════════════ -->
@@ -583,8 +891,8 @@ footer a:hover{text-decoration:underline}
     <p>Oyun indirime girince veya bedava olunca anında e-posta ile haber al.</p>
     <input class="minput" type="email" id="email-in" placeholder="E-posta adresin">
     <div class="mchks">
-      <label class="mchk"><input type="checkbox" id="n-free" checked style="accent-color:var(--accent)"> Bedava oyunlar</label>
-      <label class="mchk"><input type="checkbox" id="n-deals" checked style="accent-color:var(--accent)"> İndirimler (%50+)</label>
+      <label class="mchk"><input type="checkbox" id="n-free" checked="" style="accent-color:var(--accent)"> Bedava oyunlar</label>
+      <label class="mchk"><input type="checkbox" id="n-deals" checked="" style="accent-color:var(--accent)"> İndirimler (%50+)</label>
       <label class="mchk"><input type="checkbox" id="n-wish" style="accent-color:var(--accent)"> İstek listem</label>
     </div>
     <div class="mbtns">
@@ -600,9 +908,9 @@ footer a:hover{text-decoration:underline}
 <!-- FOOTER -->
 <footer>
   <strong>GAMEDEAL</strong> — Tüm platformlardaki oyun indirimlerini tek yerden takip et.<br>
-  Veriler: <a href="https://www.cheapshark.com" target="_blank">CheapShark API</a> &amp;
-  <a href="https://store.epicgames.com" target="_blank">Epic Games Store API</a> &amp;
-  <a href="https://gg.deals" target="_blank">GG.deals</a><br>
+  Veriler: <a href="https://www.cheapshark.com/" target="_blank">CheapShark API</a> &amp;
+  <a href="https://store.epicgames.com/" target="_blank">Epic Games Store API</a> &amp;
+  <a href="https://gg.deals/" target="_blank">GG.deals</a><br>
   <span style="color:var(--muted)">Affiliate linkler komisyon içerebilir. © 2026 GameDeal</span>
 </footer>
 
@@ -647,15 +955,14 @@ const STORES = {
 document.addEventListener('DOMContentLoaded', () => {
   initDate();
   initCountdown();
-  fetchRate().then(() => {
+  applyLang();
+  buildCompare();
+  renderWishlist();
+  // Kur çek, sonuç ne olursa olsun oyunları yükle
+  fetchRate().finally(() => {
     loadFree();
     loadDeals();
   });
-  buildCompare();
-  renderWishlist();
-  applyLang();
-  if (localStorage.getItem('gd-guide-dismissed'))
-    document.getElementById('setup-guide').style.display = 'none';
 });
 
 // ── DATE ────────────────────────────────────────
@@ -1313,5 +1620,6 @@ function dismissGuide() {
   localStorage.setItem('gd-guide-dismissed', '1');
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
