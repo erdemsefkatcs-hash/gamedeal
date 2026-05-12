@@ -623,8 +623,8 @@ footer a:hover{text-decoration:underline}
 <script>
 // ── SUPABASE CONFIG ─────────────────────────────
 // Supabase kurulumu tamamlandıktan sonra buraya kendi bilgilerini gir:
-const SUPA_URL = 'YOUR_SUPABASE_URL';   // örn: https://abcdefg.supabase.co
-const SUPA_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Supabase → Settings → API → anon key
+const SUPA_URL = 'https://wtowmegrheongllziose.supabase.co';
+const SUPA_KEY = 'sb_publishable_XFsRblsouluolDQe2IX00g_kDiBw4TG';
 
 // ── API ENDPOINTS ───────────────────────────────
 const CHEAPSHARK  = 'https://www.cheapshark.com/api/1.0';
@@ -999,32 +999,35 @@ async function doSubscribe() {
   }
 
   // ── Supabase entegrasyonu ──────────────────────
-  // Supabase kurulumunu tamamladıktan sonra aşağıdaki kodu uncomment et:
-  /*
-  const res = await fetch(`${SUPA_URL}/rest/v1/subscribers`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SUPA_KEY,
-      'Authorization': `Bearer ${SUPA_KEY}`,
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify({
-      email,
-      notif_free:     document.getElementById('n-free').checked,
-      notif_deals:    document.getElementById('n-deals').checked,
-      notif_wishlist: document.getElementById('n-wish').checked
-    })
-  });
-  if (res.status === 409) { toast('⚠️ Bu e-posta zaten kayıtlı!'); return; }
-  if (!res.ok) { toast('❌ Bir hata oluştu, tekrar dene.'); return; }
-  */
+  try {
+    const res = await fetch(`${SUPA_URL}/rest/v1/subscribers`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        email,
+        notif_free:     document.getElementById('n-free').checked,
+        notif_deals:    document.getElementById('n-deals').checked,
+        notif_wishlist: document.getElementById('n-wish').checked
+      })
+    });
+    if (res.status === 409) { toast('⚠️ Bu e-posta zaten kayıtlı!'); return; }
+    if (!res.ok) { throw new Error('API hatası'); }
+  } catch(e) {
+    // Supabase bağlantısı olmasa bile local'e kaydet
+    console.warn('Supabase bağlantı hatası:', e);
+  }
 
-  // Şimdilik local demo:
+  // Local'e de kaydet (istatistik için)
   const subs = JSON.parse(localStorage.getItem('gd-subs') || '[]');
-  if (subs.includes(email)) { toast('⚠️ Bu e-posta zaten kayıtlı!'); return; }
-  subs.push(email);
-  localStorage.setItem('gd-subs', JSON.stringify(subs));
+  if (!subs.includes(email)) {
+    subs.push(email);
+    localStorage.setItem('gd-subs', JSON.stringify(subs));
+  }
   document.getElementById('stat-subs').innerHTML = subs.length + '<em>+</em>';
 
   closeModal();
