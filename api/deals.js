@@ -216,11 +216,11 @@ export default async function handler(req, res) {
         }
       } catch(e) {}
 
-      // CheapShark — doğru parametrelerle
+      // CheapShark — sortBy Savings ile en yüksek indirimli oyunlar
       let cheapDeals = [];
       try {
         const r = await fetch(
-          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&lowerDiscount=20&upperPrice=200`,
+          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&steamRating=70`,
           { headers: { 'User-Agent': 'GameDealApp/1.0' } }
         );
         if (r.ok) {
@@ -229,6 +229,7 @@ export default async function handler(req, res) {
             .filter(g => !g.error)
             .filter(g => parseFloat(g.savings) >= 20)
             .filter(g => parseFloat(g.salePrice) < parseFloat(g.normalPrice))
+            .filter(g => !isDLCTitle(g.title))
             .map(g => ({
               title: g.title,
               platform: g.storeID === '13' ? 'epic' :
@@ -263,6 +264,43 @@ export default async function handler(req, res) {
         combined,
         total: combined.length
       };
+    }
+
+    // ── FİYAT GEÇMİŞİ ─────────────────────────────
+    else if (type === 'pricehistory') {
+      const title = req.query.title || '';
+      let history = [];
+      try {
+        // ITAD'da oyunu ara
+        const searchR = await fetch(
+          `${ITAD_BASE}/games/search/v1?key=${ITAD_KEY}&title=${encodeURIComponent(title)}&results=1`
+        );
+        if (searchR.ok) {
+          const searchD = await searchR.json();
+          const gameId = searchD.results?.[0]?.id;
+          if (gameId) {
+            // Fiyat geçmişini çek
+            const histR = await fetch(
+              `${ITAD_BASE}/games/price-history/v1?key=${ITAD_KEY}&id=${gameId}&country=TR&since=2024-01-01`
+            );
+            if (histR.ok) {
+              const histD = await histR.json();
+              const entries = histD[gameId] || [];
+              // Son 12 ayı month bazında grupla
+              const months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+              const byMonth = {};
+              entries.forEach(e => {
+                const d = new Date(e.timestamp * 1000);
+                const key = `${d.getFullYear()}-${d.getMonth()}`;
+                if (!byMonth[key] || e.price_new < byMonth[key].price)
+                  byMonth[key] = { month: months[d.getMonth()], price: e.price_new, discount: e.cut || 0 };
+              });
+              history = Object.values(byMonth).slice(-12);
+            }
+          }
+        }
+      } catch(e) {}
+      data = { history };
     }
 
     // ── TRENDING ───────────────────────────────────
