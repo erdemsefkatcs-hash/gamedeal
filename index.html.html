@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///C:/Users/user/Downloads/gamedeals-final_1.html -->
+<!-- saved from url=(0054)file:///C:/Users/user/Downloads/gamedeals-final_2.html -->
 <html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GameDeal — Bedava &amp; İndirimli Oyunlar</title>
-<link href="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/css2" rel="stylesheet">
+<link href="./vercel sondan_files/css2" rel="stylesheet">
 <style>
 :root {
   --bg: #080810;
@@ -89,7 +89,14 @@ nav button.active{color:var(--accent);background:rgba(0,229,255,0.08)}
 .api-pill.err{color:var(--accent2);border-color:rgba(255,77,109,0.25)}
 .adot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:breathe 1.5s ease-in-out infinite}
 
-.btn-sub{
+.lang-btn{
+  background:var(--card);color:var(--muted2);
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;
+  border:1px solid var(--border2);padding:7px 14px;border-radius:8px;
+  cursor:pointer;transition:all .2s;letter-spacing:.5px;
+}
+.lang-btn:hover{color:var(--accent);border-color:var(--accent)}
+.lang-btn.en{color:var(--accent3);border-color:var(--accent3)}
   background:var(--accent);color:#000;
   font-family:'Syne',sans-serif;font-weight:700;font-size:13px;
   border:none;padding:9px 20px;border-radius:8px;cursor:pointer;
@@ -477,9 +484,10 @@ footer a:hover{text-decoration:underline}
     <div class="hright">
       <div class="api-pill ok" id="api-pill">
         <div class="adot"></div>
-        <span id="api-lbl">22:31:35 — API ✓</span>
+        <span id="api-lbl">22:45:45 — API ✓</span>
       </div>
-      <button class="btn-sub" onclick="openModal()">🔔 Bildirim Al</button>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">🇹🇷 TR</button>
+      <button class="btn-sub" id="btn-notify" onclick="openModal()">🔔 Bildirim Al</button>
     </div>
   </div>
 </header>
@@ -491,7 +499,7 @@ footer a:hover{text-decoration:underline}
     <span id="today-str">12 MAYIS 2026 SALI</span>
   </div>
   <h1>OYUN AL,<br><span class="hl">PARA ÖDEME.</span></h1>
-  <p class="hero-sub">Steam, Epic, Xbox, PlayStation ve GOG'daki tüm bedava ve indirimli oyunları tek yerden takip et. İndirime girince haber al.</p>
+  <p class="hero-sub">Steam, Epic, Xbox, PlayStation ve GOG'daki tüm bedava ve indirimli oyunları tek yerden takip et.</p>
   <div class="hero-stats">
     <div class="hstat"><div class="hstat-n" id="stat-free">5<em>+</em></div><div class="hstat-l">Bu Hafta Bedava</div></div>
     <div class="hstat"><div class="hstat-n" id="stat-deals">30<em>+</em></div><div class="hstat-l">Aktif İndirim</div></div>
@@ -538,8 +546,8 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="cd-nums">
       <div class="cdblock"><div class="cdnum" id="cd-h">40</div><div class="cdlabel">Saat</div></div>
-      <div class="cdblock"><div class="cdnum" id="cd-m">28</div><div class="cdlabel">Dakika</div></div>
-      <div class="cdblock"><div class="cdnum" id="cd-s">06</div><div class="cdlabel">Saniye</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-m">13</div><div class="cdlabel">Dakika</div></div>
+      <div class="cdblock"><div class="cdnum" id="cd-s">36</div><div class="cdlabel">Saniye</div></div>
     </div>
   </div>
 
@@ -718,9 +726,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$907.56</div>
-            <div class="pcur paid">$90.35</div>
-            <div class="psave">$817.21 tasarruf!</div>
+            <div class="pold">₺41.194</div>
+            <div class="pcur paid">₺4.101</div>
+            <div class="psave">₺37.093 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-9e20-7229-9cb5-af37e9c55e0d/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -728,7 +736,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.05s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300.png" alt="Relayer Advanced - Season Pass" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300.png" alt="Relayer Advanced - Season Pass" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-40%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -747,9 +755,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$680.56</div>
-            <div class="pcur paid">$408.15</div>
-            <div class="psave">$272.41 tasarruf!</div>
+            <div class="pold">₺30.891</div>
+            <div class="pcur paid">₺18.526</div>
+            <div class="psave">₺12.365 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-b7c8-7121-8772-913b5465efbe/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -757,7 +765,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.1s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(1).png" alt="8-Bit Adventures 2: Bundle" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(1).png" alt="8-Bit Adventures 2: Bundle" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-30%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -776,9 +784,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$1361.57</div>
-            <div class="pcur paid">$952.96</div>
-            <div class="psave">$408.61 tasarruf!</div>
+            <div class="pold">₺61.802</div>
+            <div class="pcur paid">₺43.255</div>
+            <div class="psave">₺18.547 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-ef32-70a7-a9e4-acadb7162fd3/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -786,7 +794,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.15000000000000002s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300.jpg" alt="Link Letter" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300.jpg" alt="Link Letter" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-24%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -805,9 +813,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$224.73</div>
-            <div class="pcur paid">$170.25</div>
-            <div class="psave">$54.48 tasarruf!</div>
+            <div class="pold">₺10.200</div>
+            <div class="pcur paid">₺7.728</div>
+            <div class="psave">₺2.473 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-8d25-7211-9aa5-f82ef5e46b7b/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -815,7 +823,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.2s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(2).jpg" alt="葦原のアニマ" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(2).jpg" alt="葦原のアニマ" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-20%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -834,9 +842,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$181.15</div>
-            <div class="pcur paid">$144.83</div>
-            <div class="psave">$36.32 tasarruf!</div>
+            <div class="pold">₺8.222</div>
+            <div class="pcur paid">₺6.574</div>
+            <div class="psave">₺1.649 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/019dd9cf-31aa-707e-8ca9-6f000349b2a8/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -844,7 +852,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.25s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(3).jpg" alt="Anno 1800 - Pirate Cove Pack" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(3).jpg" alt="Anno 1800 - Pirate Cove Pack" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-20%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -863,9 +871,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$129.00</div>
-            <div class="pcur paid">$103.20</div>
-            <div class="psave">$25.80 tasarruf!</div>
+            <div class="pold">₺5.855</div>
+            <div class="pcur paid">₺4.684</div>
+            <div class="psave">₺1.171 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/01920a6c-75f5-733d-961b-3cad1e92968c/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -892,9 +900,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$816.31</div>
-            <div class="pcur paid">$676.47</div>
-            <div class="psave">$139.84 tasarruf!</div>
+            <div class="pold">₺37.052</div>
+            <div class="pcur paid">₺30.705</div>
+            <div class="psave">₺6.347 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-daa5-7239-be49-2db193f601cc/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -902,7 +910,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.35000000000000003s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(4).jpg" alt="Granblue Fantasy: Relink - Upgrade-Paket" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(4).jpg" alt="Granblue Fantasy: Relink - Upgrade-Paket" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-10%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -921,9 +929,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$638.70</div>
-            <div class="pcur paid">$574.78</div>
-            <div class="psave">$63.92 tasarruf!</div>
+            <div class="pold">₺28.991</div>
+            <div class="pcur paid">₺26.089</div>
+            <div class="psave">₺2.901 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/01961a43-a422-70c3-9188-1186388b92c3/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -931,7 +939,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.4s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(5).jpg" alt="Fernbus Simulator - Dänemark" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(5).jpg" alt="Fernbus Simulator - Dänemark" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-10%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -950,9 +958,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$796.38</div>
-            <div class="pcur paid">$717.01</div>
-            <div class="psave">$79.37 tasarruf!</div>
+            <div class="pold">₺36.148</div>
+            <div class="pcur paid">₺32.545</div>
+            <div class="psave">₺3.603 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-62b8-71a0-a733-22238ab9a304/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -960,7 +968,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.45s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(6).jpg" alt="Die Schlümpfe - Village Party" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(6).jpg" alt="Die Schlümpfe - Village Party" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-10%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -979,9 +987,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$2130.24</div>
-            <div class="pcur paid">$1917.17</div>
-            <div class="psave">$213.07 tasarruf!</div>
+            <div class="pold">₺96.692</div>
+            <div class="pcur paid">₺87.020</div>
+            <div class="psave">₺9.671 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018fecb0-b2d7-73f8-bebe-8958aa0cfe16/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -989,7 +997,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.5s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(7).jpg" alt="OMSI 2 Downloadpack Vol. 7 - KI-Busse" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(7).jpg" alt="OMSI 2 Downloadpack Vol. 7 - KI-Busse" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-10%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -1008,9 +1016,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$689.84</div>
-            <div class="pcur paid">$621.12</div>
-            <div class="psave">$68.72 tasarruf!</div>
+            <div class="pold">₺31.312</div>
+            <div class="pcur paid">₺28.193</div>
+            <div class="psave">₺3.119 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-a5e2-702e-91a5-aacb77eebfe5/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -1018,7 +1026,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.55s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/banner300(8).jpg" alt="Train Simulator: LGV: Marseille - Avignon Route" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/banner300(8).jpg" alt="Train Simulator: LGV: Marseille - Avignon Route" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-10%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -1037,9 +1045,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$1815.58</div>
-            <div class="pcur paid">$1633.98</div>
-            <div class="psave">$181.60 tasarruf!</div>
+            <div class="pold">₺82.409</div>
+            <div class="pcur paid">₺74.166</div>
+            <div class="psave">₺8.243 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://itad.link/018d9386-e519-701a-aa90-ff7ebc5b2861/" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -1047,7 +1055,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.6000000000000001s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/capsule_231x87.jpg" alt="Insane 2" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/capsule_231x87.jpg" alt="Insane 2" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-0%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -1066,9 +1074,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$14.99</div>
-            <div class="pcur paid">$14.99</div>
-            <div class="psave">$0.00 tasarruf!</div>
+            <div class="pold">₺680</div>
+            <div class="pcur paid">₺680</div>
+            <div class="psave">₺0 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://www.cheapshark.com/redirect?dealID=qA2rgBmr1ghSJ4jkErABh61aHfE9GzZcEfXWNgmFYNE%3D" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -1076,7 +1084,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.65s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/capsule_231x87(1).jpg" alt="Evochron Mercenary" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/capsule_231x87(1).jpg" alt="Evochron Mercenary" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-0%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -1095,9 +1103,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$14.99</div>
-            <div class="pcur paid">$14.99</div>
-            <div class="psave">$0.00 tasarruf!</div>
+            <div class="pold">₺680</div>
+            <div class="pcur paid">₺680</div>
+            <div class="psave">₺0 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://www.cheapshark.com/redirect?dealID=kyyXFup36h03rmoY%2BruepfkobNiDU7g%2BOwYaIHbfVAA%3D" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -1105,7 +1113,7 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="card" data-platform="steam" style="animation-delay:0.7000000000000001s">
       <div class="cthumb" style="">
-        <img src="./GameDeal — Bedava &amp; İndirimli Oyunlar_files/capsule_231x87(2).jpg" alt="Storm in a Teacup" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
+        <img src="./vercel sondan_files/capsule_231x87(2).jpg" alt="Storm in a Teacup" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
         <div class="ctags">
           <span class="ctag ctag-pct">-0%</span>
           <span class="ctag ctag-steam">STEAM</span>
@@ -1124,9 +1132,9 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$4.99</div>
-            <div class="pcur paid">$4.99</div>
-            <div class="psave">$0.00 tasarruf!</div>
+            <div class="pold">₺226</div>
+            <div class="pcur paid">₺226</div>
+            <div class="psave">₺0 tasarruf!</div>
           </div>
           <a class="btn-buy" href="https://www.cheapshark.com/redirect?dealID=ZCbwB7BvLaMB4cOjp5t%2B22F3R9bqjgCijPNMpipI%2BDI%3D" target="_blank" rel="noopener">Satın Al</a>
         </div>
@@ -1269,10 +1277,13 @@ const STORES = {
 document.addEventListener('DOMContentLoaded', () => {
   initDate();
   initCountdown();
-  loadFree();
-  loadDeals();
+  fetchRate().then(() => {
+    loadFree();
+    loadDeals();
+  });
   buildCompare();
   renderWishlist();
+  applyLang();
   if (localStorage.getItem('gd-guide-dismissed'))
     document.getElementById('setup-guide').style.display = 'none';
 });
@@ -1530,11 +1541,11 @@ function renderDeals() {
         </div>
         <div class="cfoot">
           <div class="pblock">
-            <div class="pold">$${parseFloat(g.normalPrice||0).toFixed(2)}</div>
-            <div class="pcur paid">$${parseFloat(g.salePrice||0).toFixed(2)}</div>
-            <div class="psave">$${(parseFloat(g.normalPrice||0)-parseFloat(g.salePrice||0)).toFixed(2)} tasarruf!</div>
+            <div class="pold">${fmtPrice(g.normalPrice||0)}</div>
+            <div class="pcur paid">${fmtPrice(g.salePrice||0)}</div>
+            <div class="psave">${fmtPrice((parseFloat(g.normalPrice||0)-parseFloat(g.salePrice||0)).toFixed(2))} ${currentLang==='tr'?'tasarruf!':'saved!'}</div>
           </div>
-          <a class="btn-buy" href="${link}" target="_blank" rel="noopener">Satın Al</a>
+          <a class="btn-buy" href="${link}" target="_blank" rel="noopener">${getLangText('btn_buy')}</a>
         </div>
       </div>
     </div>`;
@@ -1658,7 +1669,160 @@ function buildCompare() {
     </div>`).join('');
 }
 
-// ── WISHLIST ────────────────────────────────────
+
+// ── DİL SİSTEMİ (TR / EN) ───────────────────────
+const i18n = {
+  tr: {
+    nav: ['Bedava', 'İndirimler', 'Karşılaştır', 'İstek Listesi'],
+    hero_title: 'OYUN AL,',
+    hero_hl: 'PARA ÖDEME.',
+    hero_sub: 'Steam, Epic, Xbox, PlayStation ve GOG\'daki tüm bedava ve indirimli oyunları tek yerden takip et.',
+    stat_free: 'Bu Hafta Bedava',
+    stat_deals: 'Aktif İndirim',
+    stat_platform: 'Platform',
+    stat_subs: 'Abone',
+    free_title: 'Bu Hafta Bedava',
+    deals_title: 'En İyi İndirimler',
+    compare_title: 'Platform Karşılaştırması',
+    wish_title: 'İstek Listem',
+    btn_notify: '🔔 Bildirim Al',
+    btn_get: 'Hemen Al →',
+    btn_buy: 'Satın Al',
+    free_label: 'ÜCRETSİZ',
+    modal_title: '🔔 BİLDİRİM AL',
+    modal_sub: 'Oyun indirime girince veya bedava olunca anında e-posta ile haber al.',
+    modal_email: 'E-posta adresin',
+    modal_chk1: 'Bedava oyunlar',
+    modal_chk2: 'İndirimler (%50+)',
+    modal_chk3: 'İstek listem',
+    modal_btn: 'Abone Ol',
+    modal_cancel: 'Vazgeç',
+    wish_empty_title: 'Henüz oyun eklemedin',
+    wish_empty_sub: 'Oyun kartlarındaki 🤍 butonuna tıklayarak istek listene ekleyebilirsin',
+    currency: 'TRY',
+    currency_sym: '₺',
+  },
+  en: {
+    nav: ['Free Games', 'Deals', 'Compare', 'Wishlist'],
+    hero_title: 'GET GAMES,',
+    hero_hl: 'PAY NOTHING.',
+    hero_sub: 'Track all free and discounted games on Steam, Epic, Xbox, PlayStation & GOG in one place.',
+    stat_free: 'Free This Week',
+    stat_deals: 'Active Deals',
+    stat_platform: 'Platforms',
+    stat_subs: 'Subscribers',
+    free_title: 'Free This Week',
+    deals_title: 'Best Deals',
+    compare_title: 'Price Comparison',
+    wish_title: 'My Wishlist',
+    btn_notify: '🔔 Get Alerts',
+    btn_get: 'Claim Free →',
+    btn_buy: 'Buy Now',
+    free_label: 'FREE',
+    modal_title: '🔔 GET NOTIFIED',
+    modal_sub: 'Get instant email alerts when games go on sale or become free.',
+    modal_email: 'Your email address',
+    modal_chk1: 'Free games',
+    modal_chk2: 'Deals (50%+ off)',
+    modal_chk3: 'My wishlist',
+    modal_btn: 'Subscribe',
+    modal_cancel: 'Cancel',
+    wish_empty_title: 'No games added yet',
+    wish_empty_sub: 'Click the 🤍 button on any game card to add it to your wishlist',
+    currency: 'USD',
+    currency_sym: '$',
+  }
+};
+
+let currentLang = localStorage.getItem('gd-lang') || 'tr';
+let usdToTry = 38.5; // fallback kur
+
+// Döviz kurunu çek
+async function fetchRate() {
+  try {
+    const r = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    if (r.ok) {
+      const d = await r.json();
+      usdToTry = d.rates?.TRY || 38.5;
+    }
+  } catch(e) {
+    // fallback kur kullan
+  }
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'tr' ? 'en' : 'tr';
+  localStorage.setItem('gd-lang', currentLang);
+  applyLang();
+  // Kartları yeniden render et (fiyat formatı değişsin)
+  renderFree();
+  if (allDeals.length) renderDeals(); else renderDealsDemo();
+  renderWishlist();
+}
+
+function applyLang() {
+  const t = i18n[currentLang];
+  const isEN = currentLang === 'en';
+
+  // Lang butonu
+  const btn = document.getElementById('lang-btn');
+  btn.textContent = isEN ? '🇬🇧 EN' : '🇹🇷 TR';
+  btn.classList.toggle('en', isEN);
+
+  // Nav
+  document.querySelectorAll('nav button').forEach((b, i) => {
+    b.textContent = t.nav[i];
+  });
+
+  // Hero
+  document.querySelector('.hero h1').innerHTML =
+    `${t.hero_title}<br><span class="hl">${t.hero_hl}</span>`;
+  document.querySelector('.hero-sub').textContent = t.hero_sub;
+
+  // Stat labels
+  const labels = document.querySelectorAll('.hstat-l');
+  if (labels[0]) labels[0].textContent = t.stat_free;
+  if (labels[1]) labels[1].textContent = t.stat_deals;
+  if (labels[2]) labels[2].textContent = t.stat_platform;
+  if (labels[3]) labels[3].textContent = t.stat_subs;
+
+  // Section titles
+  const freeTitleEl = document.querySelector('#tab-free .sec-title');
+  if (freeTitleEl) freeTitleEl.childNodes[0].textContent = t.free_title + ' ';
+
+  const dealsTitleEl = document.querySelector('#tab-deals .sec-title');
+  if (dealsTitleEl) dealsTitleEl.childNodes[0].textContent = t.deals_title + ' ';
+
+  // Notify button
+  document.getElementById('btn-notify').textContent = t.btn_notify;
+
+  // Modal
+  document.querySelector('.modal h2').textContent = t.modal_title;
+  document.querySelector('.modal p').textContent = t.modal_sub;
+  document.getElementById('email-in').placeholder = t.modal_email;
+  const chks = document.querySelectorAll('.mchk');
+  if (chks[0]) chks[0].lastChild.textContent = ' ' + t.modal_chk1;
+  if (chks[1]) chks[1].lastChild.textContent = ' ' + t.modal_chk2;
+  if (chks[2]) chks[2].lastChild.textContent = ' ' + t.modal_chk3;
+  document.querySelector('.mbtn-p').textContent = t.modal_btn;
+  document.querySelector('.mbtn-s').textContent = t.modal_cancel;
+}
+
+// Fiyat formatlama — dile göre TL veya USD
+function fmtPrice(usdAmount) {
+  if (!usdAmount || usdAmount === 0) return currentLang === 'tr' ? '₺0' : '$0.00';
+  if (currentLang === 'tr') {
+    const tl = Math.round(parseFloat(usdAmount) * usdToTry);
+    return `₺${tl.toLocaleString('tr-TR')}`;
+  }
+  return `$${parseFloat(usdAmount).toFixed(2)}`;
+}
+
+function getLangText(key) {
+  return i18n[currentLang][key] || i18n['tr'][key];
+}
+
+
 function toggleWish(e, title, btn) {
   e.stopPropagation();
   const idx = wishlist.indexOf(title);
