@@ -179,75 +179,88 @@ export default async function handler(req, res) {
       const size = parseInt(pageSize) || 24;
       const minDisc = parseInt(lowerDiscount) || 50;
 
-      // ITAD — En iyi indirimler, minimum %30 indirim, TR fiyatları
+      // ITAD — Doğru endpoint
       let itadDeals = [];
       try {
         const r = await fetch(
-          `${ITAD_BASE}/deals/v2?key=${ITAD_KEY}&country=${tr}&limit=60&offset=0&sort=cut:desc`
+          `${ITAD_BASE}/deals/v2?key=${ITAD_KEY}&country=${tr}&limit=60&sort=cut%3Adesc`
         );
         if (r.ok) {
           const d = await r.json();
-          itadDeals = (d.list || [])
-            .filter(g => (g.deal?.cut || 0) >= 20)
-            .filter(g => g.deal?.regular?.amount > 0)
-            .filter(g => g.deal?.price?.amount < g.deal?.regular?.amount)
-            .filter(g => g.title && g.title.length > 0)
-            .filter(g => /^[\x00-\x7F\u00C0-\u024F\u0100-\u017F\s\-\'\:\.\,\!]+$/.test(g.title))
-            .filter(g => !isDLCTitle(g.title))
-            .slice(0, 30)
-            .map(g => ({
-              title: g.title,
-              platform: g.shop?.id?.includes('xbox') ? 'xbox' :
-                        g.shop?.id?.includes('ubisoft') ? 'ubisoft' :
-                        g.shop?.id?.includes('epic') ? 'epic' :
-                        g.shop?.id?.includes('gog') ? 'gog' :
-                        g.shop?.id?.includes('humble') ? 'humble' : 'steam',
-              storeName: g.shop?.name || 'Steam',
-              storeID: g.shop?.id || '1',
-              normalPrice: g.deal?.regular?.amount || 0,
-              salePrice: g.deal?.price?.amount || 0,
-              savings: g.deal?.cut || 0,
-              thumb: g.assets?.banner300 || '',
-              url: g.deal?.url || '#',
-              steamRatingPercent: 75,
-              steamRatingCount: 0,
-              isITAD: true
-            }));
+          const list = d.list || d.deals || d || [];
+          if (Array.isArray(list)) {
+            itadDeals = list
+              .filter(g => (g.deal?.cut || g.cut || 0) >= 20)
+              .filter(g => (g.deal?.regular?.amount || g.regular || 0) > 0)
+              .filter(g => (g.deal?.price?.amount || g.price || 0) < (g.deal?.regular?.amount || g.regular || 999))
+              .filter(g => g.title && g.title.length > 0)
+              .filter(g => /^[\x00-\x7F\u00C0-\u024F\s\-\'\:\.\,\!\&]+$/.test(g.title))
+              .filter(g => !isDLCTitle(g.title))
+              .slice(0, 30)
+              .map(g => ({
+                title: g.title,
+                platform: (g.shop?.id || g.storeId || '').includes('xbox') ? 'xbox' :
+                          (g.shop?.id || '').includes('ubisoft') ? 'ubisoft' :
+                          (g.shop?.id || '').includes('epic') ? 'epic' :
+                          (g.shop?.id || '').includes('gog') ? 'gog' :
+                          (g.shop?.id || '').includes('humble') ? 'humble' : 'steam',
+                storeName: g.shop?.name || 'Steam',
+                storeID: g.shop?.id || '1',
+                normalPrice: g.deal?.regular?.amount || g.regular || 0,
+                salePrice: g.deal?.price?.amount || g.price || 0,
+                savings: g.deal?.cut || g.cut || 0,
+                thumb: g.assets?.banner300 || g.image || '',
+                url: g.deal?.url || g.url || '#',
+                steamRatingPercent: 75,
+                steamRatingCount: 0,
+                isITAD: true
+              }));
+          }
         }
       } catch(e) {}
 
-      // CheapShark — onSale=1 ile sadece gerçekten indirimde olan oyunlar
+      // CheapShark
       let cheapDeals = [];
       try {
         const r = await fetch(
-          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&onSale=1&steamRating=70`,
+          `${CHEAPSHARK}/deals?pageSize=60&sortBy=Savings&desc=1&steamRating=70`,
           { headers: { 'User-Agent': 'GameDealApp/1.0' } }
         );
         if (r.ok) {
           const raw = await r.json();
           cheapDeals = raw
             .filter(g => !g.error)
-            .filter(g => parseFloat(g.savings) >= 20)
-            .filter(g => parseFloat(g.salePrice) < parseFloat(g.normalPrice))
+            .filter(g => {
+              const normal = parseFloat(g.normalPrice);
+              const sale = parseFloat(g.salePrice);
+              // Gerçek indirim yüzdesi hesapla
+              const realSavings = normal > 0 ? ((normal - sale) / normal) * 100 : 0;
+              return realSavings >= 20 && sale < normal;
+            })
             .filter(g => !isDLCTitle(g.title))
-            .map(g => ({
-              title: g.title,
-              platform: g.storeID === '13' ? 'epic' :
-                        g.storeID === '25' ? 'gog' :
-                        g.storeID === '11' ? 'humble' : 'steam',
-              storeName: g.storeID === '13' ? 'Epic' :
-                         g.storeID === '25' ? 'GOG' :
-                         g.storeID === '11' ? 'Humble' : 'Steam',
-              storeID: g.storeID,
-              normalPrice: parseFloat(g.normalPrice),
-              salePrice: parseFloat(g.salePrice),
-              savings: parseFloat(g.savings),
-              thumb: g.thumb || '',
-              url: `https://www.cheapshark.com/redirect?dealID=${g.dealID}`,
-              steamRatingPercent: parseInt(g.steamRatingPercent) || 75,
-              steamRatingCount: parseInt(g.steamRatingCount) || 0,
-              isITAD: false
-            }));
+            .map(g => {
+              const normal = parseFloat(g.normalPrice);
+              const sale = parseFloat(g.salePrice);
+              const realSavings = normal > 0 ? Math.round(((normal - sale) / normal) * 100) : 0;
+              return {
+                title: g.title,
+                platform: g.storeID === '13' ? 'epic' :
+                          g.storeID === '25' ? 'gog' :
+                          g.storeID === '11' ? 'humble' : 'steam',
+                storeName: g.storeID === '13' ? 'Epic' :
+                           g.storeID === '25' ? 'GOG' :
+                           g.storeID === '11' ? 'Humble' : 'Steam',
+                storeID: g.storeID,
+                normalPrice: normal,
+                salePrice: sale,
+                savings: realSavings,
+                thumb: g.thumb || '',
+                url: `https://www.cheapshark.com/redirect?dealID=${g.dealID}`,
+                steamRatingPercent: parseInt(g.steamRatingPercent) || 75,
+                steamRatingCount: parseInt(g.steamRatingCount) || 0,
+                isITAD: false
+              };
+            });
         }
       } catch(e) {}
 
