@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)file:///C:/Users/user/Downloads/gamedeal-animated_13.html -->
+<!-- saved from url=(0057)file:///C:/Users/user/Downloads/gamedeal-animated_14.html -->
 <html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GameDeal — Bedava &amp; İndirimli Oyunlar</title>
-<link href="./siksikiski_files/css2" rel="stylesheet">
+<link href="./birbakkk_files/css2" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -16,7 +16,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
 
 /* PARTICLES */
-#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#bg3d{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 
 /* HEADER */
 header{position:sticky;top:0;z-index:100;background:rgba(8,12,20,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -324,20 +324,20 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 
-<canvas id="particles" width="1528" height="1089"></canvas>
+<canvas id="bg3d" width="1528" height="698"></canvas>
 
 <header>
   <div class="hinner">
     <div class="logo"><div class="ldot"></div><span class="logo-text" data-text="GAMEDEAL">GAME<em>DEAL</em></span></div>
     <nav>
-      <button class="active" onclick="goTab(&#39;free&#39;)">Bedava</button>
-      <button onclick="goTab(&#39;deals&#39;)">İndirimler</button>
+      <button class="" onclick="goTab(&#39;free&#39;)">Bedava</button>
+      <button onclick="goTab(&#39;deals&#39;)" class="active">İndirimler</button>
       <button onclick="goTab(&#39;trending&#39;)">Trend</button>
       <button onclick="goTab(&#39;compare&#39;)">Karşılaştır</button>
       <button onclick="goTab(&#39;wishlist&#39;)">İstek Listesi</button>
     </nav>
     <div class="hright">
-      <div class="api-pill ok" id="api-pill"><div class="adot"></div><span id="api-lbl">API ✓ — 14:56:48</span></div>
+      <div class="api-pill ok" id="api-pill"><div class="adot"></div><span id="api-lbl">API ✓ — 15:07:23</span></div>
       <button class="lang-btn" id="lang-btn" onclick="toggleLang()">🇹🇷 TR</button>
       <button class="btn-sub" id="btn-notify" onclick="openModal()">🔔 Bildirim Al</button>
     </div>
@@ -349,7 +349,7 @@ footer a:hover{text-decoration:underline}
   <p class="hero-sub" id="hero-sub">Steam, Epic, Xbox, PlayStation ve GOG'daki tüm fırsatları tek yerden takip et.</p>
   <div class="hero-stats">
     <div class="hstat"><div class="hstat-n" id="stat-free">4<em>+</em></div><div class="hstat-l" id="sl-free">Bu Hafta Bedava</div></div>
-    <div class="hstat"><div class="hstat-n" id="stat-deals">12<em>+</em></div><div class="hstat-l" id="sl-deals">Aktif İndirim</div></div>
+    <div class="hstat"><div class="hstat-n" id="stat-deals">—<em></em></div><div class="hstat-l" id="sl-deals">Aktif İndirim</div></div>
     <div class="hstat"><div class="hstat-n">8</div><div class="hstat-l" id="sl-plat">Platform</div></div>
     <div class="hstat"><div class="hstat-n" id="stat-subs">—<em></em></div><div class="hstat-l" id="sl-subs">Abone</div></div>
   </div>
@@ -394,16 +394,16 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <!-- FREE TAB -->
-<div class="section" id="tab-free">
+<div class="section" id="tab-free" style="display: none;">
   <div class="cdbox">
     <div>
       <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:&#39;JetBrains Mono&#39;,monospace">Epic Games Store — Sonraki Değişim</div>
       <div style="font-family:&#39;Bebas Neue&#39;,sans-serif;font-size:22px;letter-spacing:1.5px;color:var(--accent)" id="cd-title">🎁 14 MAYIS PERŞEMBE — YENİ BEDAVA OYUNLAR!</div>
     </div>
     <div style="display:flex;gap:10px">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-h">26</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saat</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-m">03</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Dakika</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-s">02</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saniye</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-h">25</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saat</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-m">52</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Dakika</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><div class="cdnum" id="cd-s">04</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:&#39;JetBrains Mono&#39;,monospace">Saniye</div></div>
     </div>
   </div>
   <div class="sec-head">
@@ -419,7 +419,7 @@ footer a:hover{text-decoration:underline}
   </div>
   <div class="grid" id="grid-free"><div class="card" data-platform="epic" style="animation-delay:0s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Arranger: A Role-Puzzling Adventure&#39;,0,0,&#39;free&#39;,{image:&#39;https://cdn1.epicgames.com/spt-assets/fee7dc25f12c4400a5182c864fd89c66/arranger-a-rolepuzzling-adventure-17mu3.jpg&#39;,thumb:&#39;&#39;,platform:&#39;epic&#39;,genre:&#39;freegames&#39;,emoji:&#39;🎮&#39;,rating:4,expires:&#39;2026-05-14T15:00:00.000Z&#39;,url:&#39;https://store.epicgames.com/tr/p/8883fa6958a24a00b6f33166e4552833&#39;,isITAD:false})">
     <div class="card-shine"></div>
-    <div class="cthumb"><img src="./siksikiski_files/arranger-a-rolepuzzling-adventure-17mu3.jpg" alt="Arranger: A Role-Puzzling Adventure" loading="lazy" onerror="this.parentNode.innerHTML=&#39;&lt;div style=\&#39;font-size:44px;display:flex;align-items:center;justify-content:center;height:100%\&#39;&gt;🎮&lt;/div&gt;&#39;;this.parentNode.className=&#39;cthumb-ph&#39;;"><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Arranger: A Role-Puzzling Adventure&#39;,this)">🤍</div></div>
+    <div class="cthumb"><img src="./birbakkk_files/arranger-a-rolepuzzling-adventure-17mu3.jpg" alt="Arranger: A Role-Puzzling Adventure" loading="lazy" onerror="this.parentNode.innerHTML=&#39;&lt;div style=\&#39;font-size:44px;display:flex;align-items:center;justify-content:center;height:100%\&#39;&gt;🎮&lt;/div&gt;&#39;;this.parentNode.className=&#39;cthumb-ph&#39;;"><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Arranger: A Role-Puzzling Adventure&#39;,this)">🤍</div></div>
     <div class="cbody">
       <div class="ctitle" title="Arranger: A Role-Puzzling Adventure">Arranger: A Role-Puzzling Adventure</div>
       <div class="cgenre">freegames</div>
@@ -429,9 +429,9 @@ footer a:hover{text-decoration:underline}
         <a class="btn-get" href="https://store.epicgames.com/tr/p/8883fa6958a24a00b6f33166e4552833" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
-  </div><div class="card" data-platform="epic" style="animation-delay:0.06s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Trash Goblin&#39;,0,0,&#39;free&#39;,{image:&#39;https://cdn1.epicgames.com/spt-assets/113ae486fe9040d89a7fc25a501dc3b9/trash-goblin-9bxry.png&#39;,thumb:&#39;&#39;,platform:&#39;epic&#39;,genre:&#39;freegames&#39;,emoji:&#39;🎮&#39;,rating:4,expires:&#39;2026-05-14T15:00:00.000Z&#39;,url:&#39;https://store.epicgames.com/tr/p/7ea9b97f6a8b4c5d8047733207c5c65c&#39;,isITAD:false})">
+  </div><div class="card" data-platform="epic" style="animation-delay: 0.06s; cursor: pointer;" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Trash Goblin&#39;,0,0,&#39;free&#39;,{image:&#39;https://cdn1.epicgames.com/spt-assets/113ae486fe9040d89a7fc25a501dc3b9/trash-goblin-9bxry.png&#39;,thumb:&#39;&#39;,platform:&#39;epic&#39;,genre:&#39;freegames&#39;,emoji:&#39;🎮&#39;,rating:4,expires:&#39;2026-05-14T15:00:00.000Z&#39;,url:&#39;https://store.epicgames.com/tr/p/7ea9b97f6a8b4c5d8047733207c5c65c&#39;,isITAD:false})">
     <div class="card-shine"></div>
-    <div class="cthumb"><img src="./siksikiski_files/trash-goblin-9bxry.png" alt="Trash Goblin" loading="lazy" onerror="this.parentNode.innerHTML=&#39;&lt;div style=\&#39;font-size:44px;display:flex;align-items:center;justify-content:center;height:100%\&#39;&gt;🎮&lt;/div&gt;&#39;;this.parentNode.className=&#39;cthumb-ph&#39;;"><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Trash Goblin&#39;,this)">🤍</div></div>
+    <div class="cthumb"><img src="./birbakkk_files/trash-goblin-9bxry.png" alt="Trash Goblin" loading="lazy" onerror="this.parentNode.innerHTML=&#39;&lt;div style=\&#39;font-size:44px;display:flex;align-items:center;justify-content:center;height:100%\&#39;&gt;🎮&lt;/div&gt;&#39;;this.parentNode.className=&#39;cthumb-ph&#39;;"><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-epic">EPIC</span></div><div class="cwish " onclick="toggleWish(event,&#39;Trash Goblin&#39;,this)">🤍</div></div>
     <div class="cbody">
       <div class="ctitle" title="Trash Goblin">Trash Goblin</div>
       <div class="cgenre">freegames</div>
@@ -441,7 +441,7 @@ footer a:hover{text-decoration:underline}
         <a class="btn-get" href="https://store.epicgames.com/tr/p/7ea9b97f6a8b4c5d8047733207c5c65c" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
-  </div><div class="card" data-platform="ubisoft" style="animation-delay:0.12s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;XDefiant&#39;,0,0,&#39;free&#39;,{image:&#39;&#39;,thumb:&#39;&#39;,platform:&#39;ubisoft&#39;,genre:&#39;FPS / Free to Play&#39;,emoji:&#39;🎯&#39;,rating:3.8,expires:&#39;Kalıcı ücretsiz&#39;,url:&#39;https://www.ubisoft.com/tr-tr/game/xdefiant&#39;,isITAD:false})">
+  </div><div class="card" data-platform="ubisoft" style="animation-delay: 0.12s; cursor: pointer;" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;XDefiant&#39;,0,0,&#39;free&#39;,{image:&#39;&#39;,thumb:&#39;&#39;,platform:&#39;ubisoft&#39;,genre:&#39;FPS / Free to Play&#39;,emoji:&#39;🎯&#39;,rating:3.8,expires:&#39;Kalıcı ücretsiz&#39;,url:&#39;https://www.ubisoft.com/tr-tr/game/xdefiant&#39;,isITAD:false})">
     <div class="card-shine"></div>
     <div class="cthumb-ph" style="background:linear-gradient(135deg,#001a35,#002a50)"><span style="font-size:44px">🎯</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-ubisoft">UBISOFT</span></div><div class="cwish " onclick="toggleWish(event,&#39;XDefiant&#39;,this)">🤍</div></div>
     <div class="cbody">
@@ -453,7 +453,7 @@ footer a:hover{text-decoration:underline}
         <a class="btn-get" href="https://www.ubisoft.com/tr-tr/game/xdefiant" target="_blank" rel="noopener">Hemen Al →</a>
       </div>
     </div>
-  </div><div class="card" data-platform="ubisoft" style="animation-delay:0.18s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Brawlhalla&#39;,0,0,&#39;free&#39;,{image:&#39;&#39;,thumb:&#39;&#39;,platform:&#39;ubisoft&#39;,genre:&#39;Dövüş / Free to Play&#39;,emoji:&#39;🎯&#39;,rating:4.1,expires:&#39;Kalıcı ücretsiz&#39;,url:&#39;https://www.brawlhalla.com&#39;,isITAD:false})">
+  </div><div class="card" data-platform="ubisoft" style="animation-delay: 0.18s; cursor: pointer;" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Brawlhalla&#39;,0,0,&#39;free&#39;,{image:&#39;&#39;,thumb:&#39;&#39;,platform:&#39;ubisoft&#39;,genre:&#39;Dövüş / Free to Play&#39;,emoji:&#39;🎯&#39;,rating:4.1,expires:&#39;Kalıcı ücretsiz&#39;,url:&#39;https://www.brawlhalla.com&#39;,isITAD:false})">
     <div class="card-shine"></div>
     <div class="cthumb-ph" style="background:linear-gradient(135deg,#001a35,#002a50)"><span style="font-size:44px">🎯</span><div class="ctags"><span class="ctag ctag-free">ÜCRETSİZ</span> <span class="ctag ctag-ubisoft">UBISOFT</span></div><div class="cwish " onclick="toggleWish(event,&#39;Brawlhalla&#39;,this)">🤍</div></div>
     <div class="cbody">
@@ -469,12 +469,12 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <!-- DEALS TAB -->
-<div class="section" id="tab-deals" style="display:none">
+<div class="section" id="tab-deals" style="display: block;">
   <div class="sec-head">
-    <div class="sec-title">En İyi İndirimler <span class="badge badge-hot" id="deals-badge">12 İNDİRİM</span></div>
+    <div class="sec-title">En İyi İndirimler <span class="badge badge-hot" id="deals-badge">DEMO</span></div>
     <div class="filters">
-      <button class="fbtn on" onclick="filterDeals(&#39;all&#39;,this)">Tümü</button>
-      <button class="fbtn" onclick="filterDeals(&#39;steam&#39;,this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
+      <button class="fbtn" onclick="filterDeals(&#39;all&#39;,this)">Tümü</button>
+      <button class="fbtn on" onclick="filterDeals(&#39;steam&#39;,this)"><div class="pico" style="background:#4a90d9">S</div>Steam</button>
       <button class="fbtn" onclick="filterDeals(&#39;epic&#39;,this)"><div class="pico" style="background:#2563eb">E</div>Epic</button>
       <button class="fbtn" onclick="filterDeals(&#39;gog&#39;,this)"><div class="pico" style="background:#6b00b3">G</div>GOG</button>
       <button class="fbtn" onclick="filterDeals(&#39;humble&#39;,this)"><div class="pico" style="background:#cc2222">H</div>Humble</button>
@@ -482,246 +482,12 @@ footer a:hover{text-decoration:underline}
       <button class="fbtn" onclick="filterDeals(&#39;ubisoft&#39;,this)"><div class="pico" style="background:#0070d1">U</div>Ubisoft</button>
     </div>
   </div>
-  <div class="grid" id="grid-deals"><div class="card" data-platform="steam" style="animation-delay:0s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Mystery Masters: Twisted Lands Trilogy Collector&#39;s Edition&#39;,907.89,90.38,&#39;deal&#39;,{image:&#39;&#39;,thumb:&#39;&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/018d9386-9e20-7229-9cb5-af37e9c55e0d/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb-ph" style="background:var(--surface)">
-        🎮
-        <div class="ctags"><span class="ctag ctag-pct">-90%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Mystery Masters: Twisted Lands Trilogy Collector&#39;s Edition&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Mystery Masters: Twisted Lands Trilogy Collector&#39;s Edition">Mystery Masters: Twisted Lands Trilogy Collector's Edition</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺908</div>
-            <div class="pcur paid">₺90</div>
-            <div class="psave">📈 ₺818 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/018d9386-9e20-7229-9cb5-af37e9c55e0d/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.05s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Gerda: A Flame in Winter - Special Edition&#39;,979.65,244.8,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/018f1453-2c8d-7356-84d4-e75f496f5fe2/banner300.png&#39;,thumb:&#39;https://assets.isthereanydeal.com/018f1453-2c8d-7356-84d4-e75f496f5fe2/banner300.png&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/018f1453-2c86-7158-8ee1-4318bcb25ba1/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300.png" alt="Gerda: A Flame in Winter - Special Edition" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-75%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Gerda: A Flame in Winter - Special Edition&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Gerda: A Flame in Winter - Special Edition">Gerda: A Flame in Winter - Special Edition</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺980</div>
-            <div class="pcur paid">₺245</div>
-            <div class="psave">📈 ₺735 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/018f1453-2c86-7158-8ee1-4318bcb25ba1/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.1s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Wizard&#39;s Crown&#39;,272.05,108.55,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/018d937f-5ace-72c4-891d-4e928375bf54/banner300.png&#39;,thumb:&#39;https://assets.isthereanydeal.com/018d937f-5ace-72c4-891d-4e928375bf54/banner300.png&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/018d9386-f736-7071-b8c5-797eede6efd4/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(1).png" alt="Wizard&#39;s Crown" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-60%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Wizard&#39;s Crown&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Wizard&#39;s Crown">Wizard's Crown</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺272</div>
-            <div class="pcur paid">₺109</div>
-            <div class="psave">📈 ₺164 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/018d9386-f736-7071-b8c5-797eede6efd4/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.15000000000000002s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Machine Mind + Folk Hero&#39;,507.77,278.86,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/019dcdd8-a51c-7251-afa1-b17c3de19db8/banner300.jpg?t=1777309205&#39;,thumb:&#39;https://assets.isthereanydeal.com/019dcdd8-a51c-7251-afa1-b17c3de19db8/banner300.jpg?t=1777309205&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/019dcdd8-a50c-7062-b4a6-596166feed90/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300.jpg" alt="Machine Mind + Folk Hero" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-45%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Machine Mind + Folk Hero&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Machine Mind + Folk Hero">Machine Mind + Folk Hero</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺508</div>
-            <div class="pcur paid">₺279</div>
-            <div class="psave">📈 ₺229 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/019dcdd8-a50c-7062-b4a6-596166feed90/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.2s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Varion: The Fading Path&#39;,135.8,81.3,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/019cc01f-968f-7245-8af4-3f1e5948a1cf/banner300.jpg?t=1777582228&#39;,thumb:&#39;https://assets.isthereanydeal.com/019cc01f-968f-7245-8af4-3f1e5948a1cf/banner300.jpg?t=1777582228&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/019de023-a7bd-723d-a2c0-328acb92e6a7/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(2).jpg" alt="Varion: The Fading Path" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-40%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Varion: The Fading Path&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Varion: The Fading Path">Varion: The Fading Path</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺136</div>
-            <div class="pcur paid">₺81</div>
-            <div class="psave">📈 ₺55 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/019de023-a7bd-723d-a2c0-328acb92e6a7/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.25s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;8-Bit Adventures 2: Bundle&#39;,1362.07,953.31,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/018d937f-69a6-7079-9cf5-2462f658f9e8/banner300.png&#39;,thumb:&#39;https://assets.isthereanydeal.com/018d937f-69a6-7079-9cf5-2462f658f9e8/banner300.png&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/018d9386-ef32-70a7-a9e4-acadb7162fd3/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(3).png" alt="8-Bit Adventures 2: Bundle" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-30%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;8-Bit Adventures 2: Bundle&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="8-Bit Adventures 2: Bundle">8-Bit Adventures 2: Bundle</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺1.362</div>
-            <div class="pcur paid">₺953</div>
-            <div class="psave">📈 ₺409 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/018d9386-ef32-70a7-a9e4-acadb7162fd3/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.30000000000000004s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Become Emperor! My Trillion Beauties Planet Empire&#39;,862.48,646.74,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/019c02fb-cd4b-714b-9b40-aab2b3c9f0c9/banner300.jpg?t=1777460723&#39;,thumb:&#39;https://assets.isthereanydeal.com/019c02fb-cd4b-714b-9b40-aab2b3c9f0c9/banner300.jpg?t=1777460723&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/019dd8e5-cdb6-73f2-a8c9-fc6a460b884e/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(4).jpg" alt="Become Emperor! My Trillion Beauties Planet Empire" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-25%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Become Emperor! My Trillion Beauties Planet Empire&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Become Emperor! My Trillion Beauties Planet Empire">Become Emperor! My Trillion Beauties Planet Empire</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺862</div>
-            <div class="pcur paid">₺647</div>
-            <div class="psave">📈 ₺216 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/019dd8e5-cdb6-73f2-a8c9-fc6a460b884e/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.35000000000000003s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Link Letter&#39;,224.82,170.32,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/018d937f-1d0b-70c7-a072-1d14a04498d2/banner300.jpg&#39;,thumb:&#39;https://assets.isthereanydeal.com/018d937f-1d0b-70c7-a072-1d14a04498d2/banner300.jpg&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/018d9386-8d25-7211-9aa5-f82ef5e46b7b/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(5).jpg" alt="Link Letter" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-24%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Link Letter&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Link Letter">Link Letter</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺225</div>
-            <div class="pcur paid">₺170</div>
-            <div class="psave">📈 ₺55 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/018d9386-8d25-7211-9aa5-f82ef5e46b7b/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.4s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Hannah + Raccoo Venture&#39;,1041.42,796.17,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/019760e6-98c5-738a-840e-3a90b6201741/banner300.jpg?t=1756231805&#39;,thumb:&#39;https://assets.isthereanydeal.com/019760e6-98c5-738a-840e-3a90b6201741/banner300.jpg?t=1756231805&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/019760e6-98ac-7255-836a-48db11821eac/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(6).jpg" alt="Hannah + Raccoo Venture" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-24%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Hannah + Raccoo Venture&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Hannah + Raccoo Venture">Hannah + Raccoo Venture</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺1.041</div>
-            <div class="pcur paid">₺796</div>
-            <div class="psave">📈 ₺245 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/019760e6-98ac-7255-836a-48db11821eac/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.45s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Slimes and Arrows&#39;,149.42,114.91,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/019c3ded-fe77-7067-9e1e-293802dc2e6e/banner300.jpg?t=1777652418&#39;,thumb:&#39;https://assets.isthereanydeal.com/019c3ded-fe77-7067-9e1e-293802dc2e6e/banner300.jpg?t=1777652418&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/019de453-0ab4-716f-a962-b6a2fa720016/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(7).jpg" alt="Slimes and Arrows" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-23%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Slimes and Arrows&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Slimes and Arrows">Slimes and Arrows</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺149</div>
-            <div class="pcur paid">₺115</div>
-            <div class="psave">📈 ₺35 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/019de453-0ab4-716f-a962-b6a2fa720016/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.5s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Dracula Complete Collection&#39;,907.89,726.22,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/018d937f-065a-714f-b331-fc9d55fd36a5/banner300.jpg&#39;,thumb:&#39;https://assets.isthereanydeal.com/018d937f-065a-714f-b331-fc9d55fd36a5/banner300.jpg&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/018d9386-517d-719b-b792-8134b0e083dd/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(8).jpg" alt="Dracula Complete Collection" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-20%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Dracula Complete Collection&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Dracula Complete Collection">Dracula Complete Collection</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺908</div>
-            <div class="pcur paid">₺726</div>
-            <div class="psave">📈 ₺182 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/018d9386-517d-719b-b792-8134b0e083dd/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
-    </div><div class="card" data-platform="steam" style="animation-delay:0.55s;cursor:pointer" onmousemove="tilt3d(event,this)" onmouseleave="untilt(this)" onclick="event.stopPropagation();openPH(&#39;Machine Mind Deluxe Edition&#39;,461.89,369.24,&#39;deal&#39;,{image:&#39;https://assets.isthereanydeal.com/019cbf38-7b24-733a-a591-8ed58c0af59e/banner300.jpg?t=1772735116&#39;,thumb:&#39;https://assets.isthereanydeal.com/019cbf38-7b24-733a-a591-8ed58c0af59e/banner300.jpg?t=1772735116&#39;,platform:&#39;steam&#39;,genre:&#39;Steam&#39;,rating:3.8,url:&#39;https://itad.link/019cbf38-7b22-72df-a719-973a6dce156c/&#39;,isITAD:true})">
-      <div class="card-shine"></div>
-      <div class="cthumb" style="">
-        <img src="./siksikiski_files/banner300(9).jpg" alt="Machine Mind Deluxe Edition" loading="lazy" onerror="this.parentNode.classList.add(&#39;cthumb-ph&#39;);this.remove()">
-        <div class="ctags"><span class="ctag ctag-pct">-20%</span> <span class="ctag ctag-steam">STEAM</span></div>
-        <div class="cwish " onclick="toggleWish(event,&#39;Machine Mind Deluxe Edition&#39;,this)">🤍</div>
-      </div>
-      <div class="cbody">
-        <div class="ctitle" title="Machine Mind Deluxe Edition">Machine Mind Deluxe Edition</div>
-        <div class="cgenre">Steam</div>
-        <div class="crating"><div class="stars">★★★½☆</div><div class="rnum">3.8</div></div>
-        <div class="cfoot">
-          <div class="pblock">
-            <div class="pold">₺462</div>
-            <div class="pcur paid">₺369</div>
-            <div class="psave">📈 ₺93 tasarruf!</div>
-          </div>
-          <a class="btn-buy" href="https://itad.link/019cbf38-7b22-72df-a719-973a6dce156c/" target="_blank" rel="noopener">Satın Al</a>
-        </div>
-      </div>
+  <div class="grid" id="grid-deals">
+    <div class="err-box" style="grid-column:1/-1">
+      <div class="err-icon">🔄</div>
+      <h3>Gerçek veriler yükleniyor...</h3>
+      <p style="color:var(--muted);font-size:13px;margin-top:8px">API bağlantısı kuruluyor, lütfen bekle.</p>
+      <button class="retry" onclick="loadDeals()" style="margin-top:16px">Tekrar Dene</button>
     </div></div>
 </div>
 
@@ -736,15 +502,159 @@ footer a:hover{text-decoration:underline}
 
   <!-- En Çok Beklenenler -->
   <div class="sec-head" style="margin-bottom:16px">
-    <div class="sec-title">En Çok Beklenenler <span class="badge badge-hot" id="wait-badge">0 OYUN</span></div>
+    <div class="sec-title">En Çok Beklenenler <span class="badge badge-hot" id="wait-badge">10 OYUN</span></div>
   </div>
-  <div class="rank-list" id="list-waitlist" style="margin-bottom:48px"></div>
+  <div class="rank-list" id="list-waitlist" style="margin-bottom:48px">
+    <div class="rank-item" style="animation-delay:0s">
+      <div class="rank-num">#1</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Marvel's Spider-Man Remastered</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.06s">
+      <div class="rank-num">#2</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Horizon Forbidden West Complete Edition</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.12s">
+      <div class="rank-num">#3</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Kingdom Come: Deliverance II</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.18s">
+      <div class="rank-num">#4</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">God of War Ragnarök</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.24s">
+      <div class="rank-num">#5</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Lies Of P</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.3s">
+      <div class="rank-num">#6</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Dead Cells</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.36s">
+      <div class="rank-num">#7</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Divinity: Original Sin 2 - Definitive Edition</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.42s">
+      <div class="rank-num">#8</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">S.T.A.L.K.E.R. 2: Heart of Chornobyl</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div></div>
 
   <!-- En Çok Toplananlar -->
   <div class="sec-head" style="margin-bottom:16px">
-    <div class="sec-title">En Çok Toplananlar <span class="badge badge-free" id="coll-badge">0 OYUN</span></div>
+    <div class="sec-title">En Çok Toplananlar <span class="badge badge-free" id="coll-badge">10 OYUN</span></div>
   </div>
-  <div class="rank-list" id="list-collected"></div>
+  <div class="rank-list" id="list-collected">
+    <div class="rank-item" style="animation-delay:0s">
+      <div class="rank-num">#1</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">The Elder Scrolls V: Skyrim Special Edition</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.06s">
+      <div class="rank-num">#2</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">BioShock</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.12s">
+      <div class="rank-num">#3</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">The Witcher 2: Assassins of Kings Enhanced Edition</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.18s">
+      <div class="rank-num">#4</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Batman: Arkham Asylum Game of the Year Edition</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.24s">
+      <div class="rank-num">#5</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Company of Heroes 2</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.3s">
+      <div class="rank-num">#6</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">The Elder Scrolls V: Skyrim</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.36s">
+      <div class="rank-num">#7</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">LIMBO</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div>
+    <div class="rank-item" style="animation-delay:0.42s">
+      <div class="rank-num">#8</div>
+      <div class="rank-thumb"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:20px">🎮</div></div>
+      <div class="rank-info">
+        <div class="rank-title">Garry's Mod</div>
+        <div class="rank-sub">steam </div>
+      </div>
+      
+    </div></div>
 </div>
 
 <!-- COMPARE TAB -->
@@ -793,24 +703,24 @@ footer a:hover{text-decoration:underline}
 
     <!-- SOL: Oyun bilgisi -->
     <div class="ph-left">
-      <div class="ph-cover" id="ph-cover"><span id="ph-emoji">🎮</span></div>
-      <span class="ph-platform-tag" id="ph-platform-tag" style="background:rgba(0,229,255,0.08);color:var(--accent);border:1px solid rgba(0,229,255,0.2)">PLATFORM</span>
+      <div class="ph-cover" id="ph-cover"><span id="ph-emoji" style="display: block;">🎯</span></div>
+      <span class="ph-platform-tag" id="ph-platform-tag" style="background: rgba(0, 112, 209, 0.133); color: rgb(0, 112, 209); border: 1px solid rgba(0, 112, 209, 0.267); display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 100px; font-family: &quot;JetBrains Mono&quot;, monospace; letter-spacing: 0.5px;">UBISOFT</span>
       <div>
-        <div class="ph-title" id="ph-title">—</div>
-        <div class="ph-genre" id="ph-genre">—</div>
+        <div class="ph-title" id="ph-title">XDefiant</div>
+        <div class="ph-genre" id="ph-genre">FPS / Free to Play</div>
         <div style="display:flex;align-items:center;gap:4px;margin-top:6px">
-          <span id="ph-stars" style="color:var(--gold);font-size:12px">★★★★☆</span>
-          <span id="ph-rating" style="font-size:11px;color:var(--muted);font-family:&#39;JetBrains Mono&#39;,monospace">4.0</span>
+          <span id="ph-stars" style="color:var(--gold);font-size:12px">★★★½☆</span>
+          <span id="ph-rating" style="font-size:11px;color:var(--muted);font-family:&#39;JetBrains Mono&#39;,monospace">3.8</span>
         </div>
       </div>
       <div class="ph-price-box">
         <div class="ph-price-label">Şu anki fiyat</div>
-        <div class="ph-sale" id="ph-cur">—</div>
-        <div class="ph-original" id="ph-reg">—</div>
+        <div class="ph-sale" id="ph-cur">ÜCRETSİZ</div>
+        <div class="ph-original" id="ph-reg"></div>
         <div class="ph-discount-tag" id="ph-discount" style="display:none">—</div>
       </div>
-      <a class="ph-buy-btn" id="ph-buy-btn" href="file:///C:/Users/user/Downloads/gamedeal-animated_13.html#" target="_blank" rel="noopener">Hemen Al →</a>
-      <div style="font-size:11px;color:var(--muted);text-align:center;font-family:&#39;JetBrains Mono&#39;,monospace" id="ph-expires"></div>
+      <a class="ph-buy-btn" id="ph-buy-btn" href="https://www.ubisoft.com/tr-tr/game/xdefiant" target="_blank" rel="noopener">Hemen Al →</a>
+      <div style="font-size:11px;color:var(--muted);text-align:center;font-family:&#39;JetBrains Mono&#39;,monospace" id="ph-expires">Kalıcı ücretsiz</div>
     </div>
 
     <!-- SAĞ: Grafik + Platformlar -->
@@ -820,16 +730,26 @@ footer a:hover{text-decoration:underline}
       <div>
         <div class="ph-sec-title">Fiyat Geçmişi</div>
         <div class="ph-chart-wrap">
-          <svg id="ph-svg" viewBox="0 0 440 140" preserveAspectRatio="none"></svg>
-          <div class="ph-tooltip" id="ph-tooltip"></div>
+          <svg id="ph-svg" viewBox="0 0 440 140" preserveAspectRatio="none">
+    <defs>
+      <lineargradient id="phg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f0c040" stop-opacity="0.2"></stop>
+        <stop offset="100%" stop-color="#f0c040" stop-opacity="0"></stop>
+      </lineargradient>
+    </defs>
+    
+    <path d="M14.0,24.2 L51.5,24.2 L88.9,24.2 L126.4,24.2 L163.8,54.7 L201.3,95.5 L238.7,95.5 L276.2,44.5 L313.6,75.1 L351.1,24.2 L388.5,24.2 L426.0,126.0 L426,140 L14,140 Z" fill="url(#phg)"></path>
+    <path d="M14.0,24.2 L51.5,24.2 L88.9,24.2 L126.4,24.2 L163.8,54.7 L201.3,95.5 L238.7,95.5 L276.2,44.5 L313.6,75.1 L351.1,24.2 L388.5,24.2 L426.0,126.0" fill="none" stroke="#f0c040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <circle cx="14.0" cy="24.2" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="51.5" cy="24.2" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="88.9" cy="24.2" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="126.4" cy="24.2" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="163.8" cy="54.7" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="201.3" cy="95.5" r="5" fill="#5cdb95" stroke="#111828" stroke-width="2"></circle><circle cx="238.7" cy="95.5" r="5" fill="#5cdb95" stroke="#111828" stroke-width="2"></circle><circle cx="276.2" cy="44.5" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="313.6" cy="75.1" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="351.1" cy="24.2" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="388.5" cy="24.2" r="3" fill="#f0c040" stroke="#111828" stroke-width="2"></circle><circle cx="426.0" cy="126.0" r="5" fill="#f0c040" stroke="#111828" stroke-width="2"></circle></svg>
+          <div class="ph-tooltip" id="ph-tooltip" style="opacity: 0; left: 338.4px;">May: ÜCRETSİZ</div>
         </div>
-        <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:10px;color:var(--muted);font-family:&#39;JetBrains Mono&#39;,monospace" id="ph-labels"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:10px;color:var(--muted);font-family:&#39;JetBrains Mono&#39;,monospace" id="ph-labels"><span>Haz</span><span>Tem</span><span>Ağu</span><span>Eyl</span><span>Eki</span><span>Kas</span><span>Ara</span><span>Oca</span><span>Şub</span><span>Mar</span><span>Nis</span><span>May</span></div>
       </div>
 
       <!-- İstatistikler -->
       <div class="ph-stats">
-        <div class="ph-stat"><div class="ph-stat-l">Şu An</div><div class="ph-stat-n" id="ph-stat-cur" style="color:var(--accent)">—</div></div>
-        <div class="ph-stat"><div class="ph-stat-l">En Düşük</div><div class="ph-stat-n" id="ph-low" style="color:#5cdb95">—</div></div>
+        <div class="ph-stat"><div class="ph-stat-l">Şu An</div><div class="ph-stat-n" id="ph-stat-cur" style="color:var(--accent)">ÜCRETSİZ</div></div>
+        <div class="ph-stat"><div class="ph-stat-l">En Düşük</div><div class="ph-stat-n" id="ph-low" style="color:#5cdb95">₺5.449</div></div>
         <div class="ph-stat"><div class="ph-stat-l">Normal</div><div class="ph-stat-n" id="ph-stat-reg">—</div></div>
       </div>
 
@@ -867,23 +787,125 @@ const SUPA_URL = 'https://wtowmegrheongllziose.supabase.co';
 const SUPA_KEY = 'sb_publishable_XFsRblsouluolDQe2IX00g_kDiBw4TG';
 const API = 'https://gamedealtr.erdemsefkatcs.workers.dev';
 
-// ── PARTICLES ───────────────────────────────────
+// ── 3D BACKGROUND ───────────────────────────────
 (function(){
-  const c = document.getElementById('particles');
-  const ctx = c.getContext('2d');
-  let W, H, pts = [];
-  function resize(){W=c.width=window.innerWidth;H=c.height=document.body.scrollHeight}
-  resize(); window.addEventListener('resize',resize);
-  for(let i=0;i<80;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.5+.1});
+  const canvas = document.getElementById('bg3d');
+  const ctx = canvas.getContext('2d');
+  let W, H, mouse = {x:0,y:0};
+  
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => {
+    mouse.x = (e.clientX/window.innerWidth - 0.5) * 2;
+    mouse.y = (e.clientY/window.innerHeight - 0.5) * 2;
+  });
+
+  // 3D noktalar - küre üzerinde dağılmış
+  const pts3d = [];
+  for(let i=0;i<120;i++){
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2*Math.random()-1);
+    const r = 200 + Math.random() * 400;
+    pts3d.push({
+      ox: r * Math.sin(phi) * Math.cos(theta),
+      oy: r * Math.sin(phi) * Math.sin(theta),
+      oz: r * Math.cos(phi),
+      r: Math.random() * 1.5 + 0.3,
+      a: Math.random() * 0.4 + 0.1,
+      vx: (Math.random()-0.5)*0.2,
+      vy: (Math.random()-0.5)*0.2,
+      vz: (Math.random()-0.5)*0.2,
+      color: Math.random()>0.7 ? '77,166,255' : '240,192,64'
+    });
+  }
+
+  // 3D grid noktalar
+  const grid = [];
+  for(let i=0;i<8;i++) for(let j=0;j<6;j++){
+    grid.push({
+      x: (i/7-0.5)*W*1.4,
+      y: (j/5-0.5)*H*1.4,
+      z: (Math.random()-0.5)*300,
+      vy: (Math.random()-0.5)*0.3
+    });
+  }
+
+  let t = 0;
+  
+  function project(x,y,z,rotX,rotY){
+    // Rotate Y
+    const x1 = x*Math.cos(rotY) - z*Math.sin(rotY);
+    const z1 = x*Math.sin(rotY) + z*Math.cos(rotY);
+    // Rotate X
+    const y1 = y*Math.cos(rotX) - z1*Math.sin(rotX);
+    const z2 = y*Math.sin(rotX) + z1*Math.cos(rotX);
+    const fov = 600;
+    const scale = fov/(fov+z2+400);
+    return {x: x1*scale, y: y1*scale, z: z2, scale};
+  }
+
   function draw(){
     ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
-      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(240,192,64,${p.a})`; ctx.fill();
+    t += 0.003;
+    
+    const rotX = mouse.y * 0.15 + Math.sin(t*0.3)*0.05;
+    const rotY = mouse.x * 0.15 + t * 0.08;
+    const cx = W/2, cy = H/2;
+
+    // 3D noktaları güncelle ve çiz
+    const projected = pts3d.map(p => {
+      p.ox += p.vx; p.oy += p.vy; p.oz += p.vz;
+      // Sınır kontrolü
+      if(Math.abs(p.ox)>500) p.vx*=-1;
+      if(Math.abs(p.oy)>500) p.vy*=-1;
+      if(Math.abs(p.oz)>500) p.vz*=-1;
+      return {...project(p.ox, p.oy, p.oz, rotX, rotY), r:p.r, a:p.a, color:p.color, orig:p};
+    }).sort((a,b)=>b.z-a.z);
+
+    // Bağlantı çizgileri
+    for(let i=0;i<projected.length;i++){
+      for(let j=i+1;j<projected.length;j++){
+        const a = projected[i], b = projected[j];
+        const dist = Math.hypot(a.x-b.x, a.y-b.y);
+        if(dist < 80){
+          ctx.beginPath();
+          ctx.moveTo(cx+a.x, cy+a.y);
+          ctx.lineTo(cx+b.x, cy+b.y);
+          ctx.strokeStyle = `rgba(240,192,64,${0.04*(1-dist/80)*(a.scale+b.scale)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Noktaları çiz
+    projected.forEach(p => {
+      const alpha = Math.min(p.a * p.scale * 2, 0.6);
+      ctx.beginPath();
+      ctx.arc(cx+p.x, cy+p.y, Math.max(0.3, p.r*p.scale), 0, Math.PI*2);
+      ctx.fillStyle = `rgba(${p.color},${alpha})`;
+      ctx.fill();
     });
+
+    // Grid çizgileri - perspektifli zemin
+    ctx.save();
+    const gridAlpha = 0.04;
+    for(let i=0;i<grid.length;i++){
+      const g = grid[i];
+      g.y += g.vy;
+      if(g.y > H*0.7) g.y = -H*0.7;
+      const p = project(g.x, g.y, g.z + Math.sin(t+i)*50, rotX*0.3, rotY*0.3);
+      ctx.beginPath();
+      ctx.arc(cx+p.x, cy+p.y, 1, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(240,192,64,${gridAlpha*p.scale})`;
+      ctx.fill();
+    }
+    ctx.restore();
+
     requestAnimationFrame(draw);
   }
   draw();
@@ -1312,7 +1334,12 @@ document.addEventListener('click', e => {
 async function openPH(title, normal, sale, type, gameData) {
   const overlay = document.getElementById('ph-overlay');
   overlay.classList.add('open');
-  const g = (typeof gameData === 'string') ? JSON.parse(gameData.replace(/&#39;/g,"'")) : (gameData || {});
+  let g = {};
+  try {
+    g = typeof gameData === 'string' 
+      ? JSON.parse(gameData.replace(/&#39;/g,"'").replace(/%27/g,"'")) 
+      : (gameData || {});
+  } catch(e) { g = gameData || {}; }
   const isFree = type === 'free' || sale === 0;
   const isITAD = !!g.isITAD;
 
@@ -1403,15 +1430,29 @@ async function openPH(title, normal, sale, type, gameData) {
     if (r.ok) { const d = await r.json(); history = d.history || []; }
   } catch(e) {}
 
-  // Fallback
+  // Fallback - her oyun için benzersiz grafik (başlık hash'e göre)
   if (!history.length) {
-    const base = normal || (isITAD ? sale*2 : sale*38.5*2) || 500;
+    const base = normal || 400;
     const months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
     const now = new Date();
-    const discounts = [0,0,0.2,0,0.5,0,0.3,0,0.7,0,0.2,isFree?1:(normal&&sale?(normal-sale)/normal:0.3)];
+    // Oyun adından benzersiz seed üret
+    const seed = title.split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+    const rng = (n) => { let x = Math.sin(seed + n) * 10000; return x - Math.floor(x); };
+    // Gerçekçi fiyat geçmişi simüle et
+    const curDisc = normal && sale ? (normal - sale) / normal : 0.3;
     history = Array.from({length:12}, (_,i) => {
       const d2 = new Date(now); d2.setMonth(d2.getMonth()-11+i);
-      return { month: months[d2.getMonth()], price: Math.round(base*(1-discounts[i])) };
+      const isLastMonth = i === 11;
+      let disc;
+      if (isLastMonth) {
+        disc = isFree ? 1 : curDisc;
+      } else {
+        // Seed'e göre rastgele indirim - 0, 0.2, 0.3, 0.5, 0.7 arası
+        const r = rng(i);
+        const discOptions = [0, 0, 0, 0.2, 0.3, 0.5, 0.7, 0];
+        disc = discOptions[Math.floor(r * discOptions.length)];
+      }
+      return { month: months[d2.getMonth()], price: Math.round(base*(1-disc)) };
     });
   }
 
